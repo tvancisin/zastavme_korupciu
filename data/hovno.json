@@ -1,0 +1,3097 @@
+[
+    {
+        "start": "France",
+        "end": "Edinburgh University",
+        "num": 226
+    },
+    {
+        "start": "St Andrews",
+        "end": "Edinburgh",
+        "num": 104
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dundee",
+        "num": 92
+    },
+    {
+        "start": "St Andrews",
+        "end": "London",
+        "num": 89
+    },
+    {
+        "start": "St Andrews",
+        "end": "Perth",
+        "num": 86
+    },
+    {
+        "start": "St Andrews",
+        "end": "Bengal",
+        "num": 85
+    },
+    {
+        "start": "St Andrews",
+        "end": "Perth presbytery",
+        "num": 64
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cupar",
+        "num": 63
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kirkcaldy",
+        "num": 60
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dundee presbytery",
+        "num": 52
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cupar presbytery",
+        "num": 49
+    },
+    {
+        "start": "St Andrews",
+        "end": "Edinburgh presbytery",
+        "num": 48
+    },
+    {
+        "start": "St Andrews",
+        "end": "Glasgow",
+        "num": 42
+    },
+    {
+        "start": "Perth",
+        "end": "Glasgow University",
+        "num": 42
+    },
+    {
+        "start": "St Andrews",
+        "end": "Mumbai, India",
+        "num": 40
+    },
+    {
+        "start": "St Andrews",
+        "end": "Chennai, India",
+        "num": 37
+    },
+    {
+        "start": "St Andrews University",
+        "end": "St Andrews University",
+        "num": 35
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunkeld presbytery",
+        "num": 31
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunkeld",
+        "num": 30
+    },
+    {
+        "start": "High Kirk",
+        "end": "Brechin",
+        "num": 30
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunfermline",
+        "num": 29
+    },
+    {
+        "start": "St Andrews",
+        "end": "University of St Andrews",
+        "num": 29
+    },
+    {
+        "start": "St Andrews",
+        "end": "St Mary’s College",
+        "num": 29
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dalkeith",
+        "num": 27
+    },
+    {
+        "start": "St Andrews",
+        "end": "Forfar",
+        "num": 25
+    },
+    {
+        "start": "Creich",
+        "end": "Arbroath",
+        "num": 25
+    },
+    {
+        "start": "St Andrews",
+        "end": "Meigle presbytery",
+        "num": 25
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kirkcaldy presbytery",
+        "num": 25
+    },
+    {
+        "start": "St Andrews",
+        "end": "Auchterarder presbytery",
+        "num": 24
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "St Salvator’s College",
+        "num": 23
+    },
+    {
+        "start": "St Andrews",
+        "end": "Forfar presbytery",
+        "num": 22
+    },
+    {
+        "start": "St Andrews",
+        "end": "Haddington",
+        "num": 21
+    },
+    {
+        "start": "Monifieth",
+        "end": "Falkland",
+        "num": 21
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kemback",
+        "num": 20
+    },
+    {
+        "start": "St Monance",
+        "end": "Pittenweem",
+        "num": 20
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Edinburgh",
+        "num": 19
+    },
+    {
+        "start": "St Andrews",
+        "end": "Meigle",
+        "num": 18
+    },
+    {
+        "start": "St Andrews",
+        "end": "Madras College, St Andrews",
+        "num": 17
+    },
+    {
+        "start": "Dunino",
+        "end": "Crail",
+        "num": 16
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cambridge",
+        "num": 16
+    },
+    {
+        "start": "Footdee",
+        "end": "Aberdeen",
+        "num": 15
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dysart",
+        "num": 15
+    },
+    {
+        "start": "St Andrews",
+        "end": "Anstruther",
+        "num": 15
+    },
+    {
+        "start": "Monzie",
+        "end": "Auchterarder",
+        "num": 15
+    },
+    {
+        "start": "St Andrews",
+        "end": "Leuchars",
+        "num": 15
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kennoway",
+        "num": 14
+    },
+    {
+        "start": "Perth",
+        "end": "Perth",
+        "num": 14
+    },
+    {
+        "start": "St Andrews",
+        "end": "Fife",
+        "num": 14
+    },
+    {
+        "start": "St Leonard’s College",
+        "end": "Forgan",
+        "num": 14
+    },
+    {
+        "start": "Lundie",
+        "end": "Fowlis",
+        "num": 14
+    },
+    {
+        "start": "St Andrews",
+        "end": "Newburgh",
+        "num": 14
+    },
+    {
+        "start": "St Andrews",
+        "end": "Jamaica",
+        "num": 13
+    },
+    {
+        "start": "St Andrews",
+        "end": "Madras",
+        "num": 13
+    },
+    {
+        "start": "St Andrews",
+        "end": "India",
+        "num": 13
+    },
+    {
+        "start": "St Andrews",
+        "end": "Fordoun presbytery",
+        "num": 13
+    },
+    {
+        "start": "St Andrews",
+        "end": "Arbroath presbytery",
+        "num": 13
+    },
+    {
+        "start": "St Andrews",
+        "end": "Linlithgow presbytery",
+        "num": 13
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunfermline presbytery",
+        "num": 13
+    },
+    {
+        "start": "Cameron",
+        "end": "Burntisland",
+        "num": 12
+    },
+    {
+        "start": "St Andrews",
+        "end": "Peebles",
+        "num": 12
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunino",
+        "num": 12
+    },
+    {
+        "start": "Glamis",
+        "end": "Montrose",
+        "num": 12
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kincardine",
+        "num": 12
+    },
+    {
+        "start": "Falkland",
+        "end": "Stirling",
+        "num": 12
+    },
+    {
+        "start": "Kemback",
+        "end": "Newburn",
+        "num": 12
+    },
+    {
+        "start": "St Andrews",
+        "end": "Monimail",
+        "num": 12
+    },
+    {
+        "start": "St Mary’s College",
+        "end": "Ferryport on Craig",
+        "num": 12
+    },
+    {
+        "start": "St Andrews",
+        "end": "Chennai",
+        "num": 12
+    },
+    {
+        "start": "St Andrews",
+        "end": "Auchtertool",
+        "num": 11
+    },
+    {
+        "start": "Kilbucho",
+        "end": "Aberdour",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunblane",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Creich",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Largo",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Alyth",
+        "num": 11
+    },
+    {
+        "start": "Anstruther",
+        "end": "Ceres",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Elie",
+        "num": 11
+    },
+    {
+        "start": "Eglingham, Northumberland",
+        "end": "Newcastle",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Auchtermuchty",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Bristol",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dalkeith presbytery",
+        "num": 11
+    },
+    {
+        "start": "Sydney",
+        "end": "Australia",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Brechin presbytery",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Glasgow presbytery",
+        "num": 11
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ayr presbytery",
+        "num": 11
+    },
+    {
+        "start": "Queensferry",
+        "end": "Linlithgow",
+        "num": 10
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cameron",
+        "num": 10
+    },
+    {
+        "start": "Kilconquhar",
+        "end": "Dairsie",
+        "num": 10
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kinghorn",
+        "num": 10
+    },
+    {
+        "start": "St Andrews",
+        "end": "Guthrie",
+        "num": 10
+    },
+    {
+        "start": "Cupar",
+        "end": "Cupar",
+        "num": 10
+    },
+    {
+        "start": "St Mary’s College",
+        "end": "St Mary’s College",
+        "num": 10
+    },
+    {
+        "start": "Perth",
+        "end": "Kinross",
+        "num": 10
+    },
+    {
+        "start": "St Andrews",
+        "end": "Manchester",
+        "num": 10
+    },
+    {
+        "start": "St Andrews",
+        "end": "New Zealand",
+        "num": 10
+    },
+    {
+        "start": "Cupar",
+        "end": "Balmerino",
+        "num": 9
+    },
+    {
+        "start": "Haddington",
+        "end": "Kinnaird",
+        "num": 9
+    },
+    {
+        "start": "Newburn",
+        "end": "St Monance",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kinglassie",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "Portmoak Church",
+        "num": 9
+    },
+    {
+        "start": "Arbroath",
+        "end": "Kinnell",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "Chanonry Point",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "New York",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "West Indies",
+        "num": 9
+    },
+    {
+        "start": "Kirkcaldy",
+        "end": "Kettle",
+        "num": 9
+    },
+    {
+        "start": "Edinburgh University",
+        "end": "Edinburgh University",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lorne, Argyll and Bute",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "Isle of Mull presbytery",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dumfries presbytery",
+        "num": 9
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kilrenny",
+        "num": 8
+    },
+    {
+        "start": "Kirkcaldy",
+        "end": "Cults",
+        "num": 8
+    },
+    {
+        "start": "Alloa",
+        "end": "King’s College, Aberdeen",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Carnock",
+        "num": 8
+    },
+    {
+        "start": "St Leonard’s College",
+        "end": "St Leonard’s College",
+        "num": 8
+    },
+    {
+        "start": "Perth",
+        "end": "Moneydie",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Leslie",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kirkwall",
+        "num": 8
+    },
+    {
+        "start": "Cupar",
+        "end": "Logie",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Denny",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Tannadice",
+        "num": 8
+    },
+    {
+        "start": "New Monkland",
+        "end": "Markinch",
+        "num": 8
+    },
+    {
+        "start": "Orwell, England",
+        "end": "Carnbee",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kilmany",
+        "num": 8
+    },
+    {
+        "start": "Flisk Wood",
+        "end": "Dunbog",
+        "num": 8
+    },
+    {
+        "start": "Brechin",
+        "end": "Dunnichen",
+        "num": 8
+    },
+    {
+        "start": "Dundee",
+        "end": "Abernyte",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "England",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Strathmiglo",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Marischal College, Aberdeen",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "the University of St Andrews",
+        "num": 8
+    },
+    {
+        "start": "St Andrews University",
+        "end": "Edinburgh University",
+        "num": 8
+    },
+    {
+        "start": "St Andrews",
+        "end": "Bombay",
+        "num": 8
+    },
+    {
+        "start": "Madras",
+        "end": "Chennai, India",
+        "num": 8
+    },
+    {
+        "start": "Cupar",
+        "end": "Kilconquhar",
+        "num": 7
+    },
+    {
+        "start": "Dairsie",
+        "end": "Monifieth",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Scoonie, Leven",
+        "num": 7
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Irvine",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dublin",
+        "num": 7
+    },
+    {
+        "start": "Moffat",
+        "end": "Kirkcudbright",
+        "num": 7
+    },
+    {
+        "start": "Dollar",
+        "end": "Alva",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Prestonpans",
+        "num": 7
+    },
+    {
+        "start": "Fortingall",
+        "end": "Comrie",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Benvie",
+        "num": 7
+    },
+    {
+        "start": "Perth",
+        "end": "Elgin",
+        "num": 7
+    },
+    {
+        "start": "Kirkden",
+        "end": "Monikie",
+        "num": 7
+    },
+    {
+        "start": "Kirkcaldy",
+        "end": "Scone",
+        "num": 7
+    },
+    {
+        "start": "St Leonard’s College",
+        "end": "St Andrews",
+        "num": 7
+    },
+    {
+        "start": "Cupar",
+        "end": "Collessie",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Clunie",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lanark",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Virginia",
+        "num": 7
+    },
+    {
+        "start": "Carnbee",
+        "end": "Wemyss",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kirkmichael",
+        "num": 7
+    },
+    {
+        "start": "Dalton",
+        "end": "Lochmaben",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Oxford",
+        "num": 7
+    },
+    {
+        "start": "Jedburgh",
+        "end": "Caithness, Wick",
+        "num": 7
+    },
+    {
+        "start": "Liff",
+        "end": "Benvie",
+        "num": 7
+    },
+    {
+        "start": "Dundee",
+        "end": "Dundee",
+        "num": 7
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Edinburgh University",
+        "num": 7
+    },
+    {
+        "start": "Glasgow University",
+        "end": "Glasgow University",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Greenock presbytery",
+        "num": 7
+    },
+    {
+        "start": "Greenock presbytery",
+        "end": "Liverpool",
+        "num": 7
+    },
+    {
+        "start": "Edinburgh University",
+        "end": "St Andrews University",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lincolns Inn",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kirkcudbright presbytery",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Perth Academy",
+        "num": 7
+    },
+    {
+        "start": "Zion Chapel Newcastle",
+        "end": "Berwick",
+        "num": 7
+    },
+    {
+        "start": "Bombay",
+        "end": "Mumbai, India",
+        "num": 7
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ballingry",
+        "num": 6
+    },
+    {
+        "start": "Peebles",
+        "end": "Biggar",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Selkirk",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Caputh",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dollar",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Jedburgh",
+        "num": 6
+    },
+    {
+        "start": "Benvie",
+        "end": "Strathmartine",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Killin",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunbar",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Barry",
+        "num": 6
+    },
+    {
+        "start": "Perth",
+        "end": "Kenmore",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Paris",
+        "num": 6
+    },
+    {
+        "start": "Cambusmichael",
+        "end": "Collace",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Abdie Church",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cortachy",
+        "num": 6
+    },
+    {
+        "start": "Balmerino",
+        "end": "Wigtown",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Fettercairn",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Culross",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Maryton",
+        "num": 6
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Hamilton",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Madderty",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kingoldrum",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Tain",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Inverarity",
+        "num": 6
+    },
+    {
+        "start": "Auchterhouse",
+        "end": "Lundie",
+        "num": 6
+    },
+    {
+        "start": "Comrie",
+        "end": "Glendevon",
+        "num": 6
+    },
+    {
+        "start": "Dunkeld",
+        "end": "Weem",
+        "num": 6
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "St Mary’s College",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Oathlaw",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Rothes",
+        "num": 6
+    },
+    {
+        "start": "Angenjo",
+        "end": "Calcutta",
+        "num": 6
+    },
+    {
+        "start": "Dollar",
+        "end": "Arngask",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Leith",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Auchterderran",
+        "num": 6
+    },
+    {
+        "start": "Dundee",
+        "end": "Forfar",
+        "num": 6
+    },
+    {
+        "start": "Moffat",
+        "end": "Ireland",
+        "num": 6
+    },
+    {
+        "start": "Aberdeen",
+        "end": "Canada",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kolkata, India",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "St Andrews Grammar School",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Montrose Academy",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Stirling presbytery",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Haddington presbytery",
+        "num": 6
+    },
+    {
+        "start": "St Andrews presbytery",
+        "end": "Dunino",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Inner Temple",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "South Africa",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "New South Wales",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Paisley presbytery",
+        "num": 6
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ayr",
+        "num": 5
+    },
+    {
+        "start": "Dunkeld",
+        "end": "Blair Atholl",
+        "num": 5
+    },
+    {
+        "start": "Rafford",
+        "end": "Forres",
+        "num": 5
+    },
+    {
+        "start": "University of St Andrews",
+        "end": "St Andrews",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Saline",
+        "num": 5
+    },
+    {
+        "start": "Shotts",
+        "end": "Glenluce",
+        "num": 5
+    },
+    {
+        "start": "Muiravonside",
+        "end": "Torryburn",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Tarbat Ness",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Angus",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Blairgowrie",
+        "num": 5
+    },
+    {
+        "start": "St Leonard’s College",
+        "end": "United College",
+        "num": 5
+    },
+    {
+        "start": "Crathie",
+        "end": "Logierait",
+        "num": 5
+    },
+    {
+        "start": "Forfar",
+        "end": "Kirkden",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Moulin",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Balquhidder",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Muckhart",
+        "num": 5
+    },
+    {
+        "start": "Clunie",
+        "end": "Auchtergaven",
+        "num": 5
+    },
+    {
+        "start": "Dunblane",
+        "end": "Orkney",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Carmylie",
+        "num": 5
+    },
+    {
+        "start": "Monymusk",
+        "end": "Arbirlot",
+        "num": 5
+    },
+    {
+        "start": "Leslie",
+        "end": "Newtyle",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Eddleston",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Scotland",
+        "num": 5
+    },
+    {
+        "start": "Dysart",
+        "end": "Rossie",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kinfauns",
+        "num": 5
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Inverkeithing",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "St Madoes",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Marischal College",
+        "num": 5
+    },
+    {
+        "start": "Forfar",
+        "end": "Auchterhouse",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Moonzie",
+        "num": 5
+    },
+    {
+        "start": "Dunning",
+        "end": "Errol",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lauderdale",
+        "num": 5
+    },
+    {
+        "start": "Lerwick",
+        "end": "Liff",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Fordoun",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "America",
+        "num": 5
+    },
+    {
+        "start": "Dundee",
+        "end": "Edzell",
+        "num": 5
+    },
+    {
+        "start": "Perth",
+        "end": "Duns",
+        "num": 5
+    },
+    {
+        "start": "Oxford",
+        "end": "Norwich",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ruthven",
+        "num": 5
+    },
+    {
+        "start": "Dollar",
+        "end": "Abernethy",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kingsbarns",
+        "num": 5
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Canongate",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Eassie",
+        "num": 5
+    },
+    {
+        "start": "Glasgow",
+        "end": "Argyll",
+        "num": 5
+    },
+    {
+        "start": "Edinburgh University",
+        "end": "Philadelphia",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Newark",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Aberdeen presbytery",
+        "num": 5
+    },
+    {
+        "start": "Edinburgh University",
+        "end": "New College, Edinburgh",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Malta",
+        "num": 5
+    },
+    {
+        "start": "Edinburgh University",
+        "end": "Abernethy presbytery",
+        "num": 5
+    },
+    {
+        "start": "St Andrews University",
+        "end": "Glasgow University",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunblane presbytery",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "North America",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Jedburgh presbytery",
+        "num": 5
+    },
+    {
+        "start": "St Andrews University",
+        "end": "Sri Lanka",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Weem presbytery",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Chirnside presbytery",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Hamilton presbytery",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "University College Dundee",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Birmingham",
+        "num": 5
+    },
+    {
+        "start": "St Andrews",
+        "end": "Bath",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Rattray",
+        "num": 4
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Leyden",
+        "num": 4
+    },
+    {
+        "start": "Campvere",
+        "end": "Cockburnspath",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kirkmabreck",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Bothkennar",
+        "num": 4
+    },
+    {
+        "start": "Cupar",
+        "end": "Glenisla",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kelso",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Fortingall",
+        "num": 4
+    },
+    {
+        "start": "Perth",
+        "end": "St Andrews",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Heriot",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Glamis",
+        "num": 4
+    },
+    {
+        "start": "Perth",
+        "end": "Dunkeld",
+        "num": 4
+    },
+    {
+        "start": "Cortachy",
+        "end": "St Vigeans",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cleish",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Flisk Wood",
+        "num": 4
+    },
+    {
+        "start": "Ecclefechan",
+        "end": "Annan",
+        "num": 4
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "Dundee",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Penicuik",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Hutton",
+        "num": 4
+    },
+    {
+        "start": "Stirling",
+        "end": "Stirling",
+        "num": 4
+    },
+    {
+        "start": "Glasgow University",
+        "end": "Moray",
+        "num": 4
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "St Andrews",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Forteviot",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "York",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Newburn",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cargill",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dull",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lauder",
+        "num": 4
+    },
+    {
+        "start": "Lauder",
+        "end": "Longforgan",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Coldingham",
+        "num": 4
+    },
+    {
+        "start": "Brechin",
+        "end": "Kilmarnock",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Murroes",
+        "num": 4
+    },
+    {
+        "start": "St Leonard’s College",
+        "end": "Edinburgh University",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Clova",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Mains Castle",
+        "num": 4
+    },
+    {
+        "start": "Rosemarkie",
+        "end": "RossUllapool",
+        "num": 4
+    },
+    {
+        "start": "Scoonie, Leven",
+        "end": "Edinburgh Castle",
+        "num": 4
+    },
+    {
+        "start": "Comrie",
+        "end": "Muthill",
+        "num": 4
+    },
+    {
+        "start": "Auchterarder",
+        "end": "Gask",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Balmaclellan",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Tibbermore",
+        "num": 4
+    },
+    {
+        "start": "Dunfermline",
+        "end": "Dunbarney",
+        "num": 4
+    },
+    {
+        "start": "Dumfries, Dumfriesshire",
+        "end": "Dumfries",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kettins",
+        "num": 4
+    },
+    {
+        "start": "Kirkcaldy",
+        "end": "Dysart",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kilmaurs",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Forgan",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Crieff",
+        "num": 4
+    },
+    {
+        "start": "Perth",
+        "end": "Lintrathen",
+        "num": 4
+    },
+    {
+        "start": "Edinburgh University",
+        "end": "Edinburgh",
+        "num": 4
+    },
+    {
+        "start": "England",
+        "end": "Gray’s Inn",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Glencairn",
+        "num": 4
+    },
+    {
+        "start": "Bothkennar",
+        "end": "Clackmannan",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Germany",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Reay",
+        "num": 4
+    },
+    {
+        "start": "Wiston",
+        "end": "Douglas",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cambuslang",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ecclesgreig",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Bathgate",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunoon",
+        "num": 4
+    },
+    {
+        "start": "Glasgow",
+        "end": "St Andrews",
+        "num": 4
+    },
+    {
+        "start": "Eassie",
+        "end": "Nevay near Kirkinch",
+        "num": 4
+    },
+    {
+        "start": "Glasgow",
+        "end": "Carluke",
+        "num": 4
+    },
+    {
+        "start": "Kirkcaldy",
+        "end": "Houston",
+        "num": 4
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "St Leonard’s College",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Oxford University",
+        "num": 4
+    },
+    {
+        "start": "Beith",
+        "end": "Eaglesham",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Inverness",
+        "num": 4
+    },
+    {
+        "start": "Edinburgh",
+        "end": "St Andrews",
+        "num": 4
+    },
+    {
+        "start": "Twynholm",
+        "end": "Borgue",
+        "num": 4
+    },
+    {
+        "start": "St Mary’s College",
+        "end": "Dron",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Charlestown, South Carolina",
+        "num": 4
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "Dunino",
+        "num": 4
+    },
+    {
+        "start": "York",
+        "end": "Winchester",
+        "num": 4
+    },
+    {
+        "start": "Lethnot",
+        "end": "Navar",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Colinsburgh",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Amulree",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Aberlemno",
+        "num": 4
+    },
+    {
+        "start": "Kirkmaiden",
+        "end": "Kirkcolm",
+        "num": 4
+    },
+    {
+        "start": "Markinch",
+        "end": "Dalbeattie",
+        "num": 4
+    },
+    {
+        "start": "Ontario",
+        "end": "Quebec",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Sunderland",
+        "num": 4
+    },
+    {
+        "start": "Edinburgh Extra Mural School",
+        "end": "Edinburgh Royal Infirmary",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Guyana",
+        "num": 4
+    },
+    {
+        "start": "Logie parish",
+        "end": "Strathkinness",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Isle of Skye presbytery",
+        "num": 4
+    },
+    {
+        "start": "Lincolns Inn",
+        "end": "Southampton",
+        "num": 4
+    },
+    {
+        "start": "Arisaig",
+        "end": "Ullapool",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Edinburgh Academy",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunfermline United Presbyterian presbytery",
+        "num": 4
+    },
+    {
+        "start": "St Andrews University",
+        "end": "Dundee Academy",
+        "num": 4
+    },
+    {
+        "start": "Northwich, Cheshire",
+        "end": "Leeds",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ayrshire",
+        "num": 4
+    },
+    {
+        "start": "Glasgow Grammar School",
+        "end": "Edinburgh High School",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Carlisle",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dundee High School",
+        "num": 4
+    },
+    {
+        "start": "St Andrews Llanbryd",
+        "end": "Elgin presbytery",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Melbourne",
+        "num": 4
+    },
+    {
+        "start": "Stirling Grammar School",
+        "end": "Glasgow High School",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Annan presbytery",
+        "num": 4
+    },
+    {
+        "start": "Clifton College, Bristol",
+        "end": "Exeter",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Nottingham",
+        "num": 4
+    },
+    {
+        "start": "Glasgow University",
+        "end": "Edinburgh University",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Forres presbytery",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Portsmouth",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lathallan",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Madras Academy, Cupar",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Perth Secession presbytery",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Perth Grammar School",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Scarborough",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Biggar presbytery",
+        "num": 4
+    },
+    {
+        "start": "St Andrews",
+        "end": "Auckland",
+        "num": 4
+    },
+    {
+        "start": "Urr",
+        "end": "Kinnettles",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Queensferry",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Campvere",
+        "num": 3
+    },
+    {
+        "start": "Perth",
+        "end": "Edinburgh",
+        "num": 3
+    },
+    {
+        "start": "Brechin",
+        "end": "Edinburgh",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Airth",
+        "num": 3
+    },
+    {
+        "start": "Airth",
+        "end": "New Abbey",
+        "num": 3
+    },
+    {
+        "start": "Perth",
+        "end": "Craig",
+        "num": 3
+    },
+    {
+        "start": "Craig",
+        "end": "Dunninald",
+        "num": 3
+    },
+    {
+        "start": "Perth",
+        "end": "Lecropt",
+        "num": 3
+    },
+    {
+        "start": "Liberton",
+        "end": "Cramond",
+        "num": 3
+    },
+    {
+        "start": "Alford",
+        "end": "Alloa",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Troqueer, Dumfries",
+        "num": 3
+    },
+    {
+        "start": "Linlithgow",
+        "end": "Muiravonside",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Careston",
+        "num": 3
+    },
+    {
+        "start": "Jedburgh",
+        "end": "Eccles",
+        "num": 3
+    },
+    {
+        "start": "Blairgowrie",
+        "end": "Bendochy",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Arbuthnot",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kirriemuir",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Sandwick",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Paisley",
+        "num": 3
+    },
+    {
+        "start": "Paisley",
+        "end": "Kilbarchan",
+        "num": 3
+    },
+    {
+        "start": "Orkney",
+        "end": "Shetland",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Coldstream",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Corstorphine",
+        "num": 3
+    },
+    {
+        "start": "Tongland",
+        "end": "Hoddam",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Stranraer",
+        "num": 3
+    },
+    {
+        "start": "Orkney",
+        "end": "Rousay",
+        "num": 3
+    },
+    {
+        "start": "Rousay",
+        "end": "Egilsay",
+        "num": 3
+    },
+    {
+        "start": "Hoy",
+        "end": "Graemsay",
+        "num": 3
+    },
+    {
+        "start": "Perth",
+        "end": "Kirknewton",
+        "num": 3
+    },
+    {
+        "start": "Kirknewton",
+        "end": "Ratho",
+        "num": 3
+    },
+    {
+        "start": "Ratho",
+        "end": "Eyemouth",
+        "num": 3
+    },
+    {
+        "start": "Strathmartine",
+        "end": "Coupar Angus",
+        "num": 3
+    },
+    {
+        "start": "St Mary’s College",
+        "end": "Perth",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "St Leonards College",
+        "num": 3
+    },
+    {
+        "start": "Wick",
+        "end": "Dunnet",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Minto",
+        "num": 3
+    },
+    {
+        "start": "Stirling",
+        "end": "Dunning",
+        "num": 3
+    },
+    {
+        "start": "Hamilton",
+        "end": "Bo’ness",
+        "num": 3
+    },
+    {
+        "start": "Ratho",
+        "end": "Lasswade",
+        "num": 3
+    },
+    {
+        "start": "Dunkeld",
+        "end": "Lethendy",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Abercorn",
+        "num": 3
+    },
+    {
+        "start": "Abercorn",
+        "end": "Campsie",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Renfrew",
+        "num": 3
+    },
+    {
+        "start": "Meigle",
+        "end": "Forfar",
+        "num": 3
+    },
+    {
+        "start": "Forteviot",
+        "end": "Aberdalgie",
+        "num": 3
+    },
+    {
+        "start": "Kirkness",
+        "end": "Beith",
+        "num": 3
+    },
+    {
+        "start": "Kilmany",
+        "end": "France",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cults",
+        "num": 3
+    },
+    {
+        "start": "Symington",
+        "end": "Stonehouse",
+        "num": 3
+    },
+    {
+        "start": "Perth",
+        "end": "Caputh",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Girvan",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunrossness",
+        "num": 3
+    },
+    {
+        "start": "Clunie",
+        "end": "Little Dunkeld",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dalmeny",
+        "num": 3
+    },
+    {
+        "start": "Alvechurch",
+        "end": "Worcester",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Humbie",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lunan",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Crail",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ruthwell",
+        "num": 3
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "United College",
+        "num": 3
+    },
+    {
+        "start": "Ellon",
+        "end": "Tyrie",
+        "num": 3
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Kippen",
+        "num": 3
+    },
+    {
+        "start": "Cupar",
+        "end": "Creich",
+        "num": 3
+    },
+    {
+        "start": "King’s College Aberdeen",
+        "end": "Alnwick",
+        "num": 3
+    },
+    {
+        "start": "Logie",
+        "end": "Abercrombie",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Inchture",
+        "num": 3
+    },
+    {
+        "start": "Culross",
+        "end": "Sorbie",
+        "num": 3
+    },
+    {
+        "start": "Haddington",
+        "end": "Aberlady",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Panbride",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cavers",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Coupar",
+        "num": 3
+    },
+    {
+        "start": "Ayr",
+        "end": "Dailly",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Newbattle",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Nairn",
+        "num": 3
+    },
+    {
+        "start": "Forfar",
+        "end": "Channelkirk Parish Church",
+        "num": 3
+    },
+    {
+        "start": "Mains Castle",
+        "end": "Strathmartine",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Balmaghie",
+        "num": 3
+    },
+    {
+        "start": "Kippen",
+        "end": "Greenock",
+        "num": 3
+    },
+    {
+        "start": "Kilmany",
+        "end": "Temple",
+        "num": 3
+    },
+    {
+        "start": "Campbelltown",
+        "end": "Buchanan, Loch Lomond",
+        "num": 3
+    },
+    {
+        "start": "Perth",
+        "end": "St Madoes",
+        "num": 3
+    },
+    {
+        "start": "Marischal College Aberdeen",
+        "end": "Colinton",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Peterhouse",
+        "num": 3
+    },
+    {
+        "start": "Norwich",
+        "end": "Utrecht",
+        "num": 3
+    },
+    {
+        "start": "Falkland",
+        "end": "Falkland",
+        "num": 3
+    },
+    {
+        "start": "Culross",
+        "end": "Beath",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Inverkip",
+        "num": 3
+    },
+    {
+        "start": "Dundee",
+        "end": "Lochlee",
+        "num": 3
+    },
+    {
+        "start": "Brechin",
+        "end": "Brechin",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lairg",
+        "num": 3
+    },
+    {
+        "start": "Balmaclellan",
+        "end": "Balmaclellan",
+        "num": 3
+    },
+    {
+        "start": "St Leonard’s College",
+        "end": "Saltoun",
+        "num": 3
+    },
+    {
+        "start": "Roberton",
+        "end": "Lesmahagow",
+        "num": 3
+    },
+    {
+        "start": "St Salvator’s College",
+        "end": "Edinburgh University",
+        "num": 3
+    },
+    {
+        "start": "Canongate",
+        "end": "St Martins",
+        "num": 3
+    },
+    {
+        "start": "St Martins",
+        "end": "Cambusmichael",
+        "num": 3
+    },
+    {
+        "start": "Newburgh",
+        "end": "Newburgh",
+        "num": 3
+    },
+    {
+        "start": "Markinch",
+        "end": "Markinch",
+        "num": 3
+    },
+    {
+        "start": "Auchterarder",
+        "end": "Trinity Gask",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Newton",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Gargunnock",
+        "num": 3
+    },
+    {
+        "start": "Gargunnock",
+        "end": "Uphall",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Bowden",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Forfarshire",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Leven",
+        "num": 3
+    },
+    {
+        "start": "Auchtergaven",
+        "end": "Glenarm",
+        "num": 3
+    },
+    {
+        "start": "Forfar",
+        "end": "Meigle",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Abertarff",
+        "num": 3
+    },
+    {
+        "start": "Inverness",
+        "end": "Inverness",
+        "num": 3
+    },
+    {
+        "start": "London",
+        "end": "London",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Roxburgh",
+        "num": 3
+    },
+    {
+        "start": "Girthon",
+        "end": "Kirkbean",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Penpont",
+        "num": 3
+    },
+    {
+        "start": "Cromarty",
+        "end": "Fortrose",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Rescobie",
+        "num": 3
+    },
+    {
+        "start": "Auchterarder",
+        "end": "Calder",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Banff",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ferryport on Craig",
+        "num": 3
+    },
+    {
+        "start": "Keulen",
+        "end": "Dordrecht",
+        "num": 3
+    },
+    {
+        "start": "St Andrews University",
+        "end": "United College",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Deerness",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ashkirk",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Preston",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Fort William",
+        "num": 3
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Avoch",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Innerleithen",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Boarhills",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Chelmsford",
+        "num": 3
+    },
+    {
+        "start": "Denmark",
+        "end": "Sweden",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Newport",
+        "num": 3
+    },
+    {
+        "start": "Ayr",
+        "end": "Ayr",
+        "num": 3
+    },
+    {
+        "start": "Perth",
+        "end": "St Andrews University",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ontario",
+        "num": 3
+    },
+    {
+        "start": "Kinross presbytery",
+        "end": "Kirtle Place, Gretna",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Hastings",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Aberdeen University",
+        "num": 3
+    },
+    {
+        "start": "St Andrews presbytery",
+        "end": "Glencoe",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Abbotshall",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cardiff",
+        "num": 3
+    },
+    {
+        "start": "Edinburgh University",
+        "end": "Cape of Good Hope",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ardrishaig",
+        "num": 3
+    },
+    {
+        "start": "Plymouth",
+        "end": "Richmond",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Perth United Presbyterian presbytery",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lochmaben presbytery",
+        "num": 3
+    },
+    {
+        "start": "Uddingston, Chalmers",
+        "end": "Broughty Ferry",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Sheffield",
+        "num": 3
+    },
+    {
+        "start": "Loch Linnhe",
+        "end": "Fort Augustus",
+        "num": 3
+    },
+    {
+        "start": "Dunkeld presbytery",
+        "end": "Clunie",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dundee Grammar School",
+        "num": 3
+    },
+    {
+        "start": "Teignmouth, Devon",
+        "end": "Hampstead",
+        "num": 3
+    },
+    {
+        "start": "St Andrews presbytery",
+        "end": "Cults",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Stirling High School",
+        "num": 3
+    },
+    {
+        "start": "Aberdeen University",
+        "end": "St Andrews University",
+        "num": 3
+    },
+    {
+        "start": "Glasgow Academy",
+        "end": "Hamilton Academy",
+        "num": 3
+    },
+    {
+        "start": "Manchester",
+        "end": "Shrewsbury",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Inverness presbytery",
+        "num": 3
+    },
+    {
+        "start": "Inverness presbytery",
+        "end": "Foss",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Eday",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Nova Scotia",
+        "num": 3
+    },
+    {
+        "start": "Edinburgh",
+        "end": "St Andrews University",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Colchester",
+        "num": 3
+    },
+    {
+        "start": "Auchtermuchty",
+        "end": "Ayr Academy",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Denbigh",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cupar Secession presbytery",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunoon presbytery",
+        "num": 3
+    },
+    {
+        "start": "Glasgow University",
+        "end": "St Andrews University",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Antigua",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cullen",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kincardine O’Neil presbytery",
+        "num": 3
+    },
+    {
+        "start": "Wentworth",
+        "end": "King’s College, London",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Ipswich",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "University College, Dundee",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Taunton",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "St Andrews grammar school",
+        "num": 3
+    },
+    {
+        "start": "Clova",
+        "end": "Kirriemuir South",
+        "num": 3
+    },
+    {
+        "start": "St Andrews presbytery",
+        "end": "Kilmany",
+        "num": 3
+    },
+    {
+        "start": "Blantyre",
+        "end": "Galashiels",
+        "num": 3
+    },
+    {
+        "start": "Cupar presbytery",
+        "end": "Moonzie",
+        "num": 3
+    },
+    {
+        "start": "Rye",
+        "end": "Midlothian",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Pontefract",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "British Museum",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Lochee",
+        "num": 3
+    },
+    {
+        "start": "Edinburgh presbytery",
+        "end": "West Linton",
+        "num": 3
+    },
+    {
+        "start": "St Andrews University",
+        "end": "Edinburgh",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Merchiston School",
+        "num": 3
+    },
+    {
+        "start": "Isle of Skye presbytery",
+        "end": "Hallin",
+        "num": 3
+    },
+    {
+        "start": "Arbroath presbytery",
+        "end": "Bonhill",
+        "num": 3
+    },
+    {
+        "start": "Lincoln south",
+        "end": "Lancaster",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Echt",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cairston presbytery",
+        "num": 3
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dunbar presbytery",
+        "num": 3
+    },
+    {
+        "start": "Ayr",
+        "end": "Melrose",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Tealing",
+        "num": 2
+    },
+    {
+        "start": "Forfar",
+        "end": "Urr",
+        "num": 2
+    },
+    {
+        "start": "Dunfermline",
+        "end": "Dunfermline",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Alves",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Drainie",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Rafford",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dornoch",
+        "num": 2
+    },
+    {
+        "start": "Edinburgh",
+        "end": "Whitekirk",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Connor, Antrim",
+        "num": 2
+    },
+    {
+        "start": "Connor, Antrim",
+        "end": "Antrim",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Spott",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Colmonell",
+        "num": 2
+    },
+    {
+        "start": "Biggar",
+        "end": "Kilbucho",
+        "num": 2
+    },
+    {
+        "start": "Kilbucho",
+        "end": "Walston",
+        "num": 2
+    },
+    {
+        "start": "Selkirk",
+        "end": "Liberton",
+        "num": 2
+    },
+    {
+        "start": "Edinburgh",
+        "end": "St Giles",
+        "num": 2
+    },
+    {
+        "start": "Turiff",
+        "end": "Premnay",
+        "num": 2
+    },
+    {
+        "start": "Bourtie",
+        "end": "Alford",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Shotts",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Maryculter",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "South Carolina",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Dryfesdale",
+        "num": 2
+    },
+    {
+        "start": "Glasgow",
+        "end": "Killellan",
+        "num": 2
+    },
+    {
+        "start": "Kirkpatrick-Fleming",
+        "end": "Moffat",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Cadder",
+        "num": 2
+    },
+    {
+        "start": "Kelso",
+        "end": "Callander",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Thurso",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Westray",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Kinneil",
+        "num": 2
+    },
+    {
+        "start": "Careston",
+        "end": "St Cyrus",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Logie parish",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Stenness",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Mordington",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Hutton and Corrie",
+        "num": 2
+    },
+    {
+        "start": "Kilbride",
+        "end": "Killean",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Fogo",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "Menmuir",
+        "num": 2
+    },
+    {
+        "start": "St Andrews",
+        "end": "King Edward, Banff",
+        "num": 2
+    }
+]

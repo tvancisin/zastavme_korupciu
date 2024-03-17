@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+  <script src="js/d3.v6.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+    crossorigin=""></script>
+  <script src="https://unpkg.com/d3-geo-voronoi@1"></script>
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <style>
+    body {
+      background-color: black;
+      font-family: "Montserrat";
+      overflow: hidden;
+    }
+
+    #mapid {
+      width: 100%;
+      height: 100%;
+    }
+
+    #individual {
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      border-style: solid;
+      overflow-y: scroll;
+    }
+
+    p {
+      color: white;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .flight {
+      fill: none;
+      stroke: white;
+      stroke-width: 1px;
+      stroke-opacity: 0.2;
+    }
+
+    .airport {
+      fill: white;
+      opacity: 0.5;
+      stroke: black;
+      stroke-width: 0.5;
+    }
+
+    .voronoi {
+      fill: none;
+      stroke: none;
+      stroke-width: 1px;
+    }
+
+    .highlight {
+      opacity: 1 !important;
+      stroke: orange !important;
+      stroke-width: 1.5px !important;
+      stroke-opacity: 0.8 !important;
+    }
+
+    g#voronoi {
+      pointer-events: all;
+    }
+
+    #tooltip {
+      font-size: 10pt;
+      font-weight: 900;
+      fill: white;
+      text-shadow: 1px 1px 0 #252525, 1px -1px 0 #252525, -1px 1px 0 #252525,
+        -1px -1px 0 #252525;
+    }
+
+    #birth {
+      position: absolute;
+      top: 20px;
+    }
+
+    #study {
+      position: absolute;
+      top: 50px;
+    }
+
+    #career {
+      position: absolute;
+      top: 80px;
+    }
+
+    #buttons {
+      position: absolute;
+      left: 43px;
+      /* display: inline-flex; */
+    }
+
+    /* #male {
+        position: absolute;
+        left: 5px;
+        top: 10px;
+      }
+      #female {
+        position: absolute;
+        left: 5px;
+        top: 40px;
+      }
+      #lla {
+        position: absolute;
+        left: 5px;
+        top: 70px;
+      } */
+    #circles {
+      position: absolute;
+      width: 60px;
+      top: 10px;
+      left: 0px;
+    }
+
+    .circ {
+      fill: white;
+      fill-opacity: 0.3;
+      stroke: black;
+      cursor: pointer;
+    }
+
+    button {
+      width: 40px;
+      margin: 1px;
+      cursor: pointer;
+      border: 1px solid #3a3a3a;
+      border-radius: 5px;
+      color: white;
+      padding: 5px 5px;
+      text-align: center;
+      font-family: "Montserrat";
+      background-color: #282832;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    #panel {
+      left: -2px;
+      background-color: #282832;
+      border: 2px solid #3a3a3a;
+      position: relative;
+      border-radius: 5px 5px 5px 5px;
+    }
+
+    #unilogo {
+      position: absolute;
+      left: 3px;
+      width: 35px;
+      z-index: 2;
+    }
+
+    #details {
+      position: absolute;
+      font-size: 12px;
+      z-index: 999;
+      background-color: black;
+      width: 120px;
+      color: white;
+      border-radius: 3px;
+      padding: 0.8em;
+      border: none;
+      box-shadow: 0 0px 0px 0 rgb(255 255 255 / 10%), 0 0px 5px 0 rgba(255, 255, 255, 0.2);
+      margin: auto;
+      display: none;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="mapid">
+    <svg>
+      <g id="basemap"></g>
+      <g id="flights"></g>
+      <g id="airports"></g>
+      <g id="voronoi"></g>
+      <text id="tooltip" style="display: none"></text>
+    </svg>
+  </div>
+  <div id="details"></div>
+  <!-- <div id="circles">
+      <img id="unilogo" src="logo.png" />
+      <svg
+        id="panel"
+        width="40px"
+        height="360px"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          id="first_line"
+          d="M 15 20 C 30 40, 30 100, 15 120"
+          stroke="white"
+          opacity="0.5"
+          fill="transparent"
+        />
+        <path
+          id="second_line"
+          d="M 15 120 C 30 150, 30 220, 15 240"
+          stroke="white"
+          opacity="0.5"
+          fill="transparent"
+        />
+        <path
+          id="third_line"
+          d="M 15 120 C 35 160, 40 320, 15 340"
+          stroke="white"
+          opacity="0.5"
+          fill="transparent"
+        />
+        <circle class="circ" id="birth" cx="15" cy="20" r="12" />
+        <circle class="circ" id="study" cx="15" cy="240" r="12" />
+        <circle class="circ" id="career" cx="15" cy="340" r="12" />
+      </svg>
+      <div id="buttons">
+        <button id="male" class="flo">M</button>
+        <button id="female" class="flo">F</button>
+        <button id="lla" class="flo">LLA</button>
+      </div>
+    </div>
+    <div id="individual"></div> -->
+  <!-- <script type="text/javascript" src="worldgeojson.js"></script> -->
+  <script>
+    let inner_screen_height = window.innerHeight,
+      inner_screen_width = window.innerWidth;
+
+    const width = inner_screen_width - 20;
+    const height = inner_screen_height - 20;
+    const hypotenuse = Math.sqrt(width * width + height * height);
+    $("#circles").css({ height: height });
+    $("#panel, #buttons").css({ top: height / 2 - 200 });
+    $("#unilogo").css({ top: height / 2 - 100 });
+    d3.select("#birth").style("fill-opacity", 1);
+    d3.selectAll("#first_line").style("opacity", 1);
+
+    $("#individual").css({
+      top: height * 0.005,
+      bottom: height * 0.005,
+      right: width * 0.0033,
+      width: width * 0.2,
+    });
+
+    const my_svg = d3
+      .select("#mapid")
+      .select("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    const g = {
+      basemap: my_svg.select("g#basemap"),
+      flights: my_svg.select("g#flights"),
+      airports: my_svg.select("g#airports"),
+      voronoi: my_svg.select("g#voronoi"),
+    };
+
+    const tooltip = d3.select("text#tooltip");
+
+    let europeProjection = d3
+      .geoOrthographic()
+      .center([2, 54])
+      .scale([width * 1.1])
+      .translate([width * 0.4, height / 2.5]);
+
+
+    Promise.all([
+      d3.json("europe.json"),
+      d3.csv("election.csv"),
+    ]).then(drawMap)
+
+    pathGenerator = d3.geoPath().projection(europeProjection);
+    let color_scale = d3.scaleLinear().domain([1, 80]).range([0, 1]);
+
+    function drawMap(files) {
+      let map = files[0]
+      let data = files[1]
+
+      g.basemap
+        .selectAll("path")
+        .data(map.features)
+        .join("path")
+        .attr("d", pathGenerator)
+        .style("cursor", "pointer")
+        .attr("stroke", "black")
+        .attr("stroke-width", 0.5)
+        .attr("class", "country")
+        .attr("fill", "white")
+        .attr("opacity", function (d) {
+          let the_country = data.find(function (m) {
+            return m.COUNTRY_ID == d.properties.name
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+        .on("mousemove", function (d, i) {
+          console.log(d);
+          let the_country = data.find(function (m) {
+            return m.COUNTRY_ID == i.properties.name
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.name + `: ` + the_rate)
+
+          d3.select(this)
+            .style("stroke-width", 2)
+            .style("stroke", "red")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .on("click", function (d, i) {
+          console.log(d, i);
+
+        });
+    }
+
+
+    // d3.json("europe.json").then(drawMap);
+
+    function distance(source, target) {
+      const dx2 = Math.pow(target.x - source.x, 2);
+      const dy2 = Math.pow(target.y - source.y, 2);
+      return Math.sqrt(dx2 + dy2);
+    }
+
+    function typemyAirport(airport) {
+      airport.forEach(function (d) {
+        d.longitude = parseFloat(d.longitude);
+        d.latitude = parseFloat(d.latitude);
+        const coords = europeProjection([d.longitude, d.latitude]);
+        d.x = coords[0];
+        d.y = coords[1];
+        d.outgoing = 0;
+        d.incoming = 0;
+        d.flights = [];
+      });
+      return airport;
+    }
+    function typemyFlight(flight) {
+      flight.forEach(function (d) {
+        d.num = parseInt(d.num);
+      });
+      return flight;
+    }
+
+    // Promise.all([d3.json("data/1877-1897.json")]).then(function (files) {
+    //   // births
+    //   let birth_uni = d3.groups(files[0], (d) => d.birth_location != null),
+    //     tru_birth_uni_ = birth_uni[0][1];
+    //   //// gender birth division
+    //   let exclude_lla = d3.groups(tru_birth_uni_, (d) => d.elements != 7);
+    //   let all_birth = exclude_lla[1][1]; // !!!! all except lla's
+
+    //   let birth_gender = d3.groups(tru_birth_uni_, (d) => d.gender != "F"),
+    //     male_birth = birth_gender[1][1], // !!!! males
+    //     female_and_lla_birth = birth_gender[0][1],
+    //     fem_lla_birth = d3.groups(
+    //       female_and_lla_birth,
+    //       (d) => d.elements != 7
+    //     ),
+    //     non_lla_birth = fem_lla_birth[1][1], // females !!!!
+    //     lla_birth = fem_lla_birth[0][1]; // lla's !!!!
+
+    //   // universities
+    //   let tru_false_uni = d3.groups(
+    //     files[0],
+    //     (d) => d.other_universities !== null
+    //   );
+    //   let tru_uni = tru_false_uni[1][1]; // all
+
+    //   //// gender universities division
+    //   let gender_uni = d3.groups(tru_uni, (d) => d.gender != "M");
+    //   let female_uni = gender_uni[1][1]; // females
+    //   let male_uni = gender_uni[0][1]; // males
+
+    //   // career
+    //   let floruit = d3.groups(files[0], (d) => d.floruit != null);
+    //   let tru_floruit = floruit[1][1]; // all
+
+    //   //// gender career division
+    //   let floruit_gender = d3.groups(tru_floruit, (d) => d.gender != "F");
+    //   let male_career = floruit_gender[0][1]; // males
+    //   let female_career = floruit_gender[1][1]; // females
+    //   let lla_fem = d3.groups(female_career, (d) => d.study.degrees != null);
+    //   let fin_lla = d3.groups(
+    //     lla_fem[1][1],
+    //     (d) => d.study.degrees[0].name == "LLA"
+    //   );
+    //   let mitchell = fin_lla[1][1];
+
+    //   const birth_constructor = function (data) {
+    //     let birth_locations = [
+    //       {
+    //         name: "St Andrews",
+    //         country: "GB",
+    //         latitude: 56.3417136,
+    //         longitude: -2.7942674,
+    //       },
+    //     ];
+    //     let new_birth_data = [];
+
+    //     data.forEach(function (a) {
+    //       let check_name = a.birth_location.official_name;
+    //       const entry = birth_locations.find((c) => c.name == check_name);
+    //       if (entry == undefined) {
+    //         birth_locations.push({
+    //           name: a.birth_location.official_name,
+    //           country: a.birth_location.country,
+    //           latitude: a.birth_location.latitude,
+    //           longitude: a.birth_location.longitude,
+    //         });
+    //       }
+    //     });
+
+    //     data.forEach(function (v) {
+    //       let birth_name_check = v.birth_location.official_name;
+    //       const entree = new_birth_data.find(
+    //         (o) => o.start == birth_name_check
+    //       );
+    //       if (entree != null) {
+    //         entree.num += 1;
+    //       } else {
+    //         new_birth_data.push({
+    //           start: birth_name_check,
+    //           end: "St Andrews",
+    //           num: 1,
+    //         });
+    //       }
+    //     });
+    //     return [birth_locations, new_birth_data];
+    //   };
+
+    //   let test_b = birth_constructor(tru_birth_uni_),
+    //     exchange_b = test_b[0];
+
+    //   let all_gender = birth_constructor(all_birth),
+    //     all_b_loc = all_gender[0],
+    //     all_b_line = all_gender[1];
+
+    //   let test_f_l = birth_constructor(female_and_lla_birth),
+    //     exchange_l = test_f_l[0];
+
+    //   let just_birth_locations = birth_constructor(non_lla_birth),
+    //     fem_just_loc = just_birth_locations[0],
+    //     fem_conn = just_birth_locations[1];
+
+    //   let lla_birth_locations = birth_constructor(lla_birth),
+    //     lla_just_loc = lla_birth_locations[0],
+    //     lla_conn = lla_birth_locations[1];
+
+    //   let male_birth_locations = birth_constructor(male_birth),
+    //     male_just_loc = male_birth_locations[0],
+    //     male_conn = male_birth_locations[1];
+
+    //   const university_constructor = function (x) {
+    //     let uni_locations = [
+    //       {
+    //         name: "St Andrews",
+    //         country: "GB",
+    //         latitude: 56.3417136,
+    //         longitude: -2.7942674,
+    //       },
+    //     ];
+    //     let new_data = [];
+
+    //     x.forEach(function (d) {
+    //       for (let i = 0; i < d.other_universities.length; i++) {
+    //         let name_check = d.other_universities[i].location.official_name;
+    //         const entry = uni_locations.find((e) => e.name == name_check);
+    //         if (entry == undefined) {
+    //           uni_locations.push({
+    //             name: d.other_universities[i].location.official_name,
+    //             country: d.other_universities[i].location.country,
+    //             latitude: d.other_universities[i].location.latitude,
+    //             longitude: d.other_universities[i].location.longitude,
+    //           });
+    //         }
+    //       }
+    //     });
+
+    //     x.forEach(function (d) {
+    //       if (d.other_universities.length == 1) {
+    //         let name_check = d.other_universities[0].location.official_name;
+    //         const entry = new_data.find((e) => e.end == name_check);
+    //         if (entry != null) {
+    //           entry.num += 1;
+    //         } else {
+    //           new_data.push({
+    //             start: "St Andrews",
+    //             end: name_check,
+    //             num: 1,
+    //           });
+    //         }
+    //       } else {
+    //         loc_array = ["St Andrews"];
+    //         d.other_universities.forEach(function (m) {
+    //           loc_array.push(m.location.official_name);
+    //         });
+    //         for (x = 0; x < loc_array.length - 1; x++) {
+    //           the_the = [loc_array[x], loc_array[x + 1]];
+    //           if (x == 0) {
+    //             const mlha = new_data.find((o) => o.end == the_the[1]);
+    //             if (mlha != null) {
+    //               mlha.num += 1;
+    //             } else {
+    //               new_data.push({
+    //                 start: the_the[0],
+    //                 end: the_the[1],
+    //                 num: 1,
+    //               });
+    //             }
+    //           } else {
+    //             const first = new_data.find(
+    //               (f) => f.start == the_the[0] && f.end == the_the[1]
+    //             );
+    //             if (first != null) {
+    //               first.num += 1;
+    //             } else {
+    //               new_data.push({
+    //                 start: the_the[0],
+    //                 end: the_the[1],
+    //                 num: 1,
+    //               });
+    //             }
+    //           }
+    //         }
+    //       }
+    //     });
+    //     return [uni_locations, new_data];
+    //   };
+
+    //   let all_uni = university_constructor(tru_uni),
+    //     all_uni_locations = all_uni[0],
+    //     all_uni_connections = all_uni[1];
+
+    //   let male_unis = university_constructor(male_uni),
+    //     just_male_unis = male_unis[0],
+    //     male_connections = male_unis[1];
+
+    //   let fe_unis = university_constructor(female_uni),
+    //     fe_uni_locs = fe_unis[0],
+    //     fe_uni_conn = fe_unis[1];
+
+    //   const career_constructor = function (x) {
+    //     let just_floruit_locations = [
+    //       {
+    //         name: "St Andrews",
+    //         country: "GB",
+    //         latitude: 56.3417136,
+    //         longitude: -2.7942674,
+    //       },
+    //     ];
+    //     let new_floruit_data = [];
+
+    //     x.forEach(function (d) {
+    //       for (let i = 0; i < d.floruit.length; i++) {
+    //         let name_check = d.floruit[i].location.official_name;
+    //         const entry = just_floruit_locations.find(
+    //           (e) => e.name == name_check
+    //         );
+    //         if (entry == undefined) {
+    //           just_floruit_locations.push({
+    //             name: d.floruit[i].location.official_name,
+    //             country: d.floruit[i].location.country,
+    //             latitude: d.floruit[i].location.latitude,
+    //             longitude: d.floruit[i].location.longitude,
+    //           });
+    //         }
+    //       }
+    //     });
+
+    //     x.forEach(function (d) {
+    //       if (d.floruit.length == 1) {
+    //         let name_check = d.floruit[0].location.official_name;
+    //         const entry = new_floruit_data.find((e) => e.end == name_check);
+    //         if (entry != null) {
+    //           entry.num += 1;
+    //         } else {
+    //           new_floruit_data.push({
+    //             start: "St Andrews",
+    //             end: name_check,
+    //             num: 1,
+    //           });
+    //         }
+    //       } else {
+    //         loc_array = ["St Andrews"];
+    //         d.floruit.forEach(function (m) {
+    //           loc_array.push(m.location.official_name);
+    //         });
+    //         for (x = 0; x < loc_array.length - 1; x++) {
+    //           the_the = [loc_array[x], loc_array[x + 1]];
+    //           if (x == 0) {
+    //             const mlha = new_floruit_data.find(
+    //               (o) => o.end == the_the[1]
+    //             );
+    //             if (mlha != null) {
+    //               mlha.num += 1;
+    //             } else {
+    //               new_floruit_data.push({
+    //                 start: the_the[0],
+    //                 end: the_the[1],
+    //                 num: 1,
+    //               });
+    //             }
+    //           } else {
+    //             const first = new_floruit_data.find(
+    //               (f) => f.start == the_the[0] && f.end == the_the[1]
+    //             );
+    //             if (first != null) {
+    //               first.num += 1;
+    //             } else {
+    //               new_floruit_data.push({
+    //                 start: the_the[0],
+    //                 end: the_the[1],
+    //                 num: 1,
+    //               });
+    //             }
+    //           }
+    //         }
+    //       }
+    //     });
+    //     return [just_floruit_locations, new_floruit_data];
+    //   };
+
+    //   let all_car = career_constructor(tru_floruit),
+    //     just_floruit_locations = all_car[0],
+    //     new_floruit_data = all_car[1];
+
+    //   let male_car = career_constructor(male_career),
+    //     male_career_locs = male_car[0],
+    //     male_career_lines = male_car[1];
+
+    //   let fem_car = career_constructor(female_career),
+    //     f_car_locs = fem_car[0],
+    //     f_car_lines = fem_car[1];
+
+    //   let lll = career_constructor(mitchell),
+    //     mitchell_loc = lll[0],
+    //     mitchell_link = lll[1];
+
+    //   let all_locs = typemyAirport(exchange_b),
+    //     all_line = typemyFlight(all_b_line);
+
+    //   let universities = typemyAirport(all_uni_locations);
+    //   let connections = typemyFlight(all_uni_connections);
+
+    //   let floruit_locs = typemyAirport(just_floruit_locations);
+    //   let floruit_line = typemyFlight(new_floruit_data);
+
+    //   function processOtherData(univer, connect, which) {
+    //     let airports = univer;
+    //     let flights = connect;
+
+    //     // convert airports array (pre filter) into map for fast lookup
+    //     let iata = new Map(airports.map((node) => [node.name, node]));
+
+    //     // calculate incoming and outgoing degree based on flights
+    //     // flights are given by airport iata code (not index)
+    //     flights.forEach(function (link) {
+    //       link.source = iata.get(link.start);
+    //       link.target = iata.get(link.end);
+
+    //       link.source.outgoing += link.num;
+    //       link.target.incoming += link.num;
+    //     });
+
+    //     // remove airports out of bounds
+    //     airports = airports.filter(
+    //       (airport) =>
+    //         airport.x >= 0 &&
+    //         airport.x <= 2000 &&
+    //         airport.y >= 0 &&
+    //         airport.y <= 1000
+    //     );
+
+    //     // remove airports with NA state
+    //     airports = airports.filter((airport) => airport.name !== null);
+
+    //     // remove airports without any flights
+    //     // airports = airports.filter(
+    //     //   (airport) => airport.outgoing > 0 && airport.incoming > 0
+    //     // );
+
+    //     // sort airports by outgoing degree
+    //     airports.sort((a, b) => d3.descending(a.outgoing, b.outgoing));
+
+    //     // keep only the top airports
+    //     // airports = airports.slice(0, 50);
+
+    //     // done filtering airports can draw
+    //     drawAirports(airports, which);
+    //     drawPolygons(airports, which);
+
+    //     // reset map to only include airports post-filter
+    //     iata = new Map(airports.map((node) => [node.name, node]));
+
+    //     // filter out flights that are not between airports we have leftover
+    //     flights = flights.filter(
+    //       (link) => iata.has(link.source.name) && iata.has(link.target.name)
+    //     );
+
+    //     // done filtering flights can draw
+    //     if (which == "lla") {
+    //       console.log("llas");
+    //     } else {
+    //       drawFlights(airports, flights, which);
+    //     }
+    //   }
+
+    //   const hypotenuse = Math.sqrt(width * width + height * height);
+
+    //   let scales_lla = {
+    //     // used to scale airport bubbles
+    //     airports: d3.scaleSqrt().range([1.2, 1.4]),
+
+    //     // used to scale number of segments per line
+    //     segments: d3.scaleLinear().domain([0, hypotenuse]).range([1, 20]),
+    //   };
+
+    //   let birth_scales = {
+    //     // used to scale airport bubbles
+    //     airports: d3.scaleSqrt().range([1.4, 14]),
+
+    //     // used to scale number of segments per line
+    //     segments: d3.scaleLinear().domain([0, hypotenuse]).range([1, 35]),
+    //   };
+
+    //   let study_scales = {
+    //     // used to scale airport bubbles
+    //     airports: d3.scaleSqrt().range([1.2, 15]),
+
+    //     // used to scale number of segments per line
+    //     segments: d3.scaleLinear().domain([0, hypotenuse]).range([1, 50]),
+    //   };
+
+    //   processOtherData(all_locs, all_line, "births");
+    //   let grouped_unis = d3.groups(tru_birth_uni_, function (v) {
+    //     return v.birth_location.official_name;
+    //   });
+
+    //   let study_group = [
+    //     {
+    //       name: "Aberdeen",
+    //       entries: [],
+    //     },
+    //   ];
+    //   tru_uni.forEach(function (d) {
+    //     for (let x = 0; x < d.other_universities.length; x++) {
+    //       name_check = d.other_universities[x].location.official_name;
+    //       const entry = study_group.find((e) => e.name == name_check);
+    //       if (entry != null) {
+    //         entry.entries.push(d);
+    //       } else {
+    //         study_group.push({
+    //           name: name_check,
+    //           entries: [d],
+    //         });
+    //       }
+    //     }
+    //   });
+
+    //   let floruit_group = [
+    //     {
+    //       name: "Aberdeen",
+    //       entries: [],
+    //     },
+    //   ];
+    //   tru_floruit.forEach(function (d) {
+    //     for (let x = 0; x < d.floruit.length; x++) {
+    //       name_check = d.floruit[x].location.official_name;
+    //       const entry = floruit_group.find((e) => e.name == name_check);
+    //       if (entry != null) {
+    //         entry.entries.push(d);
+    //       } else {
+    //         floruit_group.push({
+    //           name: name_check,
+    //           entries: [d],
+    //         });
+    //       }
+    //     }
+    //   });
+
+    //   let male_uni_group = [
+    //     {
+    //       name: "Aberdeen",
+    //       entries: [],
+    //     },
+    //   ];
+    //   male_uni.forEach(function (d) {
+    //     for (let x = 0; x < d.other_universities.length; x++) {
+    //       name_check = d.other_universities[x].location.official_name;
+    //       const entry = male_uni_group.find((e) => e.name == name_check);
+    //       if (entry != null) {
+    //         entry.entries.push(d);
+    //       } else {
+    //         male_uni_group.push({
+    //           name: name_check,
+    //           entries: [d],
+    //         });
+    //       }
+    //     }
+    //   });
+
+    //   let female_uni_group = [
+    //     {
+    //       name: "Aberdeen",
+    //       entries: [],
+    //     },
+    //   ];
+    //   female_uni.forEach(function (d) {
+    //     for (let x = 0; x < d.other_universities.length; x++) {
+    //       name_check = d.other_universities[x].location.official_name;
+    //       const entry = female_uni_group.find((e) => e.name == name_check);
+    //       if (entry != null) {
+    //         entry.entries.push(d);
+    //       } else {
+    //         female_uni_group.push({
+    //           name: name_check,
+    //           entries: [d],
+    //         });
+    //       }
+    //     }
+    //   });
+
+    //   let male_career_group = [
+    //     {
+    //       name: "Aberdeen",
+    //       entries: [],
+    //     },
+    //   ];
+    //   male_career.forEach(function (d) {
+    //     for (let x = 0; x < d.floruit.length; x++) {
+    //       name_check = d.floruit[x].location.official_name;
+    //       const entry = male_career_group.find((e) => e.name == name_check);
+    //       if (entry != null) {
+    //         entry.entries.push(d);
+    //       } else {
+    //         male_career_group.push({
+    //           name: name_check,
+    //           entries: [d],
+    //         });
+    //       }
+    //     }
+    //   });
+    //   let female_career_group = [
+    //     {
+    //       name: "Aberdeen",
+    //       entries: [],
+    //     },
+    //   ];
+    //   female_career.forEach(function (d) {
+    //     for (let x = 0; x < d.floruit.length; x++) {
+    //       name_check = d.floruit[x].location.official_name;
+    //       const entry = female_career_group.find((e) => e.name == name_check);
+    //       if (entry != null) {
+    //         entry.entries.push(d);
+    //       } else {
+    //         female_career_group.push({
+    //           name: name_check,
+    //           entries: [d],
+    //         });
+    //       }
+    //     }
+    //   });
+    //   let lla_career_group = [
+    //     {
+    //       name: "Hamilton",
+    //       entries: [],
+    //     },
+    //   ];
+    //   mitchell.forEach(function (d) {
+    //     for (let x = 0; x < d.floruit.length; x++) {
+    //       name_check = d.floruit[x].location.official_name;
+    //       const entry = lla_career_group.find((e) => e.name == name_check);
+    //       if (entry != null) {
+    //         entry.entries.push(d);
+    //       } else {
+    //         lla_career_group.push({
+    //           name: name_check,
+    //           entries: [d],
+    //         });
+    //       }
+    //     }
+    //   });
+
+    //   console.log(lla_career_group);
+
+    //   let which_three = "birth";
+    //   d3.select("#birth").on("click", function (x) {
+    //     d3.selectAll("#second_line, #third_line").style("opacity", 0.3);
+    //     d3.selectAll("#first_line").style("opacity", 1);
+    //     d3.selectAll("button").style("background-color", "#282832");
+    //     d3.select("#buttons")
+    //       .transition()
+    //       .style("top", height / 2 - 200 + "px");
+    //     d3.selectAll(".circ").style("fill-opacity", 0.3);
+    //     d3.select("#birth").style("fill-opacity", 1);
+    //     d3.select("#birth").style("fill-opacity", 1);
+    //     grouped_unis = d3.groups(tru_birth_uni_, function (v) {
+    //       return v.birth_location.official_name;
+    //     });
+    //     which_three = "birth";
+    //     d3.selectAll(".flight, .voronoi, .airport").remove();
+    //     processOtherData(all_locs, all_line, "births");
+    //     console.log(x);
+    //   });
+    //   d3.select("#study").on("click", function (x) {
+    //     d3.selectAll("#first_line, #third_line").style("opacity", 0.3);
+    //     d3.selectAll("#second_line").style("opacity", 1);
+    //     d3.selectAll("button").style("background-color", "#282832");
+    //     d3.select("#buttons")
+    //       .transition()
+    //       .style("top", height / 2 - 215 + 208 + "px");
+    //     d3.selectAll(".circ").style("fill-opacity", 0.3);
+    //     d3.select("#study").style("fill-opacity", 1);
+    //     grouped_unis = study_group;
+    //     which_three = "study";
+    //     d3.selectAll(".flight, .voronoi, .airport").remove();
+    //     processOtherData(universities, connections, "study");
+    //     console.log(x);
+    //   });
+    //   d3.select("#career").on("click", function (x) {
+    //     d3.selectAll("#first_line, #second_line").style("opacity", 0.3);
+    //     d3.selectAll("#third_line").style("opacity", 1);
+    //     d3.selectAll("button").style("background-color", "#282832");
+    //     d3.select("#buttons")
+    //       .transition()
+    //       .style("top", height / 2 - 210 + 278 + "px");
+    //     d3.selectAll(".circ").style("fill-opacity", 0.3);
+    //     d3.select("#career").style("fill-opacity", 1);
+    //     grouped_unis = floruit_group;
+    //     which_three = "career";
+    //     d3.selectAll(".flight, .voronoi, .airport").remove();
+    //     processOtherData(floruit_locs, floruit_line, "career");
+    //     console.log(x);
+    //   });
+
+    //   d3.select("#male").on("click", function (x) {
+    //     d3.selectAll("button").style("background-color", "#282832");
+    //     d3.select("#male").style("background-color", "#555555");
+    //     if (which_three == "birth") {
+    //       grouped_unis = d3.groups(male_birth, function (v) {
+    //         return v.birth_location.official_name;
+    //       });
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let male_birth_locs = typemyAirport(male_just_loc),
+    //         male_birth_line = typemyFlight(male_conn);
+    //       processOtherData(male_birth_locs, male_birth_line, "births");
+    //     } else if (which_three == "study") {
+    //       grouped_unis = male_uni_group;
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let male_uni = typemyAirport(just_male_unis),
+    //         male_line = typemyFlight(male_connections);
+    //       processOtherData(male_uni, male_line, "study");
+    //     } else if (which_three == "career") {
+    //       grouped_unis = male_career_group;
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let male_c_loc = typemyAirport(male_career_locs),
+    //         male_c_con = typemyFlight(male_career_lines);
+    //       processOtherData(male_c_loc, male_c_con, "career");
+    //     }
+    //   });
+    //   d3.select("#female").on("click", function (x) {
+    //     d3.selectAll("button").style("background-color", "#282832");
+    //     d3.select("#female").style("background-color", "#555555");
+    //     if (which_three == "birth") {
+    //       grouped_unis = d3.groups(non_lla_birth, function (v) {
+    //         return v.birth_location.official_name;
+    //       });
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let female_birth_locs = typemyAirport(fem_just_loc),
+    //         female_birth_line = typemyFlight(fem_conn);
+    //       processOtherData(female_birth_locs, female_birth_line, "births");
+    //     } else if (which_three == "study") {
+    //       grouped_unis = female_uni_group;
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let fmale_uni = typemyAirport(fe_uni_locs),
+    //         fmale_line = typemyFlight(fe_uni_conn);
+    //       processOtherData(fmale_uni, fmale_line, "study");
+    //     } else if (which_three == "career") {
+    //       grouped_unis = female_career_group;
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let female_c_loc = typemyAirport(f_car_locs),
+    //         female_c_con = typemyFlight(f_car_lines);
+    //       processOtherData(female_c_loc, female_c_con, "career");
+    //     }
+    //   });
+    //   d3.select("#lla").on("click", function (x) {
+    //     d3.selectAll("button").style("background-color", "#282832");
+    //     d3.select("#lla").style("background-color", "#555555");
+    //     if (which_three == "birth") {
+    //       grouped_unis = d3.groups(lla_birth, function (v) {
+    //         return v.birth_location.official_name;
+    //       });
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let lla_loc = typemyAirport(lla_just_loc),
+    //         lla_con = typemyFlight(lla_conn);
+    //       processOtherData(lla_loc, lla_con, "lla");
+    //     } else if (which_three == "study") {
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //     } else if (which_three == "career") {
+    //       grouped_unis = lla_career_group;
+    //       d3.selectAll(".flight, .voronoi, .airport").remove();
+    //       let m_loc = typemyAirport(mitchell_loc),
+    //         m_con = typemyFlight(mitchell_link);
+    //       processOtherData(m_loc, m_con, "special");
+    //     }
+    //   });
+
+    //   function drawAirports(airports, which) {
+    //     console.log(which);
+    //     if (which == "births" || which == "career" || which == "lla") {
+    //       scales = birth_scales;
+    //     } else if (which == "special") {
+    //       scales = scales_lla;
+    //     } else if (which == "study") {
+    //       scales = study_scales;
+    //     }
+
+    //     // adjust scale
+    //     const extent = d3.extent(airports, (d) => d.outgoing);
+    //     scales.airports.domain(extent);
+
+    //     // draw airport bubbles
+    //     g.airports
+    //       .selectAll("circle.airport")
+    //       .data(airports, (d) => d.iata)
+    //       .enter()
+    //       .append("circle")
+    //       .attr("r", function (d) {
+    //         if (which == "births" || which == "lla" || which == "career") {
+    //           return scales.airports(d.outgoing);
+    //         } else {
+    //           return scales.airports(d.incoming);
+    //         }
+    //       })
+    //       .attr("cx", (d) => d.x) // calculated on load
+    //       .attr("cy", (d) => d.y) // calculated on load
+    //       .attr("class", "airport")
+    //       .each(function (d) {
+    //         // adds the circle object to our airport
+    //         // makes it fast to select airports on hover
+    //         d.bubble = this;
+    //       });
+    //   }
+
+    //   const print_individuals = function (indi, which) {
+    //     console.log(indi);
+    //     $(".rmve").remove();
+    //     if (which == "births" || which == "lla") {
+    //       d3.select("#individual")
+    //         .selectAll("p")
+    //         .data(indi[1])
+    //         .enter()
+    //         .append("p")
+    //         .attr("class", "rmve")
+    //         .html(function (d) {
+    //           console.log(d);
+    //           return (
+    //             d.forename +
+    //             "<br/> " +
+    //             d.surname +
+    //             "<br/> " +
+    //             "<b>" +
+    //             "Birth Location: " +
+    //             "</b>" +
+    //             d.birth_location.original_name
+    //           );
+    //         })
+    //         .style("color", "white");
+    //     } else if (
+    //       which == "study" ||
+    //       which == "career" ||
+    //       which == "special"
+    //     ) {
+    //       d3.select("#individual")
+    //         .selectAll("p")
+    //         .data(indi.entries)
+    //         .enter()
+    //         .append("p")
+    //         .attr("class", "rmve")
+    //         .html(function (d) {
+    //           console.log(d);
+    //           return d.forename + "<br/>" + d.surname;
+    //         })
+    //         .style("color", "white");
+    //     }
+    //   };
+
+    //   function drawPolygons(airports, which) {
+    //     // convert array of airports into geojson format
+    //     const geojson = airports.map(function (airport) {
+    //       return {
+    //         type: "Feature",
+    //         properties: airport,
+    //         geometry: {
+    //           type: "Point",
+    //           coordinates: [airport.longitude, airport.latitude],
+    //         },
+    //       };
+    //     });
+
+    //     // calculate voronoi polygons
+    //     const polygons = d3.geoVoronoi().polygons(geojson);
+    //     // console.log(polygons.features);
+
+    //     let click_checker = 1;
+    //     let the_airport = "";
+    //     g.voronoi
+    //       .selectAll("path")
+    //       .data(polygons.features)
+    //       .enter()
+    //       .append("path")
+    //       .attr("d", d3.geoPath(europeProjection))
+    //       .attr("class", "voronoi")
+    //       .on("click", function (event, d) {
+    //         click_checker += 1;
+    //         if (click_checker % 2 == 0) {
+    //           $(".flight:not(.highlight)").css("opacity", 0);
+    //         } else {
+    //           d3.select("text#tooltip").style("visibility", "hidden");
+    //           $(".flight:not(.highlight)").css("opacity", 1);
+    //           d3.selectAll(".airport").classed("highlight", false);
+    //           d3.selectAll(".flight").classed("highlight", false);
+    //         }
+    //       })
+    //       .on("mouseover", function (event, d) {
+    //         // if nothing is clicked
+    //         if (click_checker % 2 != 0) {
+    //           let airport = d.properties.site.properties;
+    //           if (which == "births" || which == "lla") {
+    //             entry = grouped_unis.find(function (e) {
+    //               return e[0] == airport.name;
+    //             });
+    //           } else if (
+    //             which == "study" ||
+    //             which == "career" ||
+    //             which == "special"
+    //           ) {
+    //             entry = grouped_unis.find(function (e) {
+    //               return e.name == airport.name;
+    //             });
+    //           }
+    //           print_individuals(entry, which);
+
+    //           d3.select(airport.bubble).classed("highlight", true);
+
+    //           d3.selectAll(airport.flights)
+    //             .classed("highlight", true)
+    //             .raise();
+
+    //           // make tooltip take up space but keep it invisible
+    //           tooltip.style("display", null);
+    //           tooltip.style("visibility", "hidden");
+
+    //           // set default tooltip positioning
+    //           tooltip.attr("text-anchor", "middle");
+    //           tooltip.attr("dy", -scales.airports(airport.outgoing) - 4);
+    //           tooltip.attr("x", airport.x);
+    //           tooltip.attr("y", airport.y);
+
+    //           // set the tooltip text
+    //           tooltip.text(airport.name);
+
+    //           // // double check if the anchor needs to be changed
+    //           let bbox = tooltip.node().getBBox();
+
+    //           if (bbox.x <= 0) {
+    //             tooltip.attr("text-anchor", "start");
+    //           } else if (bbox.x + bbox.width >= width) {
+    //             tooltip.attr("text-anchor", "end");
+    //           }
+
+    //           tooltip.style("visibility", "visible");
+    //         }
+    //       })
+    //       .on("mouseout", function (event, d) {
+    //         if (click_checker % 2 != 0) {
+    //           let airport = d.properties.site.properties;
+
+    //           d3.select(airport.bubble).classed("highlight", false);
+
+    //           d3.selectAll(airport.flights).classed("highlight", false);
+
+    //           d3.select("text#tooltip").style("visibility", "hidden");
+    //         }
+    //       });
+    //     // .on("dblclick", function (d) {
+    //     //   // toggle voronoi outline
+    //     //   let toggle = d3.select(this).classed("highlight");
+    //     //   d3.select(this).classed("highlight", !toggle);
+    //     // });
+    //   }
+
+    //   // let transform = d3.geoTransform({ point: projectPoint }),
+    //   //   path = d3.geoPath().projection(transform);
+
+    //   function drawFlights(airports, flights, which) {
+    //     if (which == "births" || which == "lla" || which == "career") {
+    //       scales = birth_scales;
+    //     } else if (which == "study") {
+    //       scales = study_scales;
+    //     }
+
+    //     // break each flight between airports into multiple segments
+    //     let bundle = generateSegments(airports, flights);
+
+    //     // https://github.com/d3/d3-shape#curveBundle
+    //     let line = d3
+    //       .line()
+    //       .curve(d3.curveBundle)
+    //       .x((airport) => airport.x)
+    //       .y((airport) => airport.y);
+
+    //     // const limit = 100;
+
+    //     let links = g.flights
+    //       .selectAll("path.flight")
+    //       .data(bundle.paths)
+    //       .enter()
+    //       .append("path")
+    //       .attr("d", line)
+    //       .attr("class", "flight")
+    //       .each(function (d, i) {
+    //         // if (i > limit) {
+    //         //   return;
+    //         // }
+    //         // adds the path object to our source airport
+    //         // makes it fast to select outgoing paths
+    //         d[0].flights.push(this);
+    //       });
+
+    //     // https://github.com/d3/d3-force
+    //     let layout = d3
+    //       .forceSimulation()
+    //       // settle at a layout faster
+    //       .alphaDecay(0.2)
+    //       // nearby nodes attract each other
+    //       .force(
+    //         "charge",
+    //         d3
+    //           .forceManyBody()
+    //           .strength(10)
+    //           .distanceMax(scales.airports.range()[1] * 2)
+    //       )
+    //       // edges want to be as short as possible
+    //       // prevents too much stretching
+    //       .force("link", d3.forceLink().strength(0.9).distance(0))
+    //       .on("tick", function (d) {
+    //         links.attr("d", line);
+    //       })
+    //       .on("end", function (d) {
+    //         // console.log("layout complete");
+    //       });
+
+    //     layout.nodes(bundle.nodes).force("link").links(bundle.links);
+    //     // if (which == "study") {
+    //     //   d3.selectAll(".flight").style("stroke-opacity", 0.3);
+    //     // } else {
+    //     //   d3.selectAll(".flight").style("stroke-opacity", 0.1);
+    //     // }
+    //   }
+
+    //   function generateSegments(nodes, links) {
+    //     // generate separate graph for edge bundling
+    //     // nodes: all nodes including control nodes
+    //     // links: all individual segments (source to target)
+    //     // paths: all segments combined into single path for drawing
+    //     let bundle = { nodes: [], links: [], paths: [] };
+
+    //     // make existing nodes fixed
+    //     bundle.nodes = nodes.map(function (d, i) {
+    //       d.fx = d.x;
+    //       d.fy = d.y;
+    //       return d;
+    //     });
+
+    //     links.forEach(function (d, i) {
+    //       // calculate the distance between the source and target
+    //       let length = distance(d.source, d.target);
+
+    //       // calculate total number of inner nodes for this link
+    //       let total = Math.round(scales.segments(length));
+
+    //       // create scales from source to target
+    //       let xscale = d3
+    //         .scaleLinear()
+    //         .domain([0, total + 1]) // source, inner nodes, target
+    //         .range([d.source.x, d.target.x]);
+
+    //       let yscale = d3
+    //         .scaleLinear()
+    //         .domain([0, total + 1])
+    //         .range([d.source.y, d.target.y]);
+
+    //       // initialize source node
+    //       let source = d.source;
+    //       let target = null;
+
+    //       // add all points to local path
+    //       let local = [source];
+
+    //       for (let j = 1; j <= total; j++) {
+    //         // calculate target node
+    //         target = {
+    //           x: xscale(j),
+    //           y: yscale(j),
+    //         };
+
+    //         local.push(target);
+    //         bundle.nodes.push(target);
+
+    //         bundle.links.push({
+    //           source: source,
+    //           target: target,
+    //         });
+
+    //         source = target;
+    //       }
+
+    //       local.push(d.target);
+
+    //       // add last link to target node
+    //       bundle.links.push({
+    //         source: target,
+    //         target: d.target,
+    //       });
+
+    //       bundle.paths.push(local);
+    //     });
+
+    //     return bundle;
+    //   }
+    // });
+  </script>
+</body>
+
+</html>
