@@ -4,207 +4,24 @@
 <head>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
-  <script src="js/d3.v6.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
     integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
     crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
     integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
     crossorigin=""></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://unpkg.com/d3-geo-voronoi@1"></script>
   <script src="//d3js.org/topojson.v1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <style>
-    body {
-      background-color: black;
-      font-family: "Montserrat";
-      overflow: hidden;
-    }
-
-    #mapid {
-      width: 100%;
-      height: 100%;
-    }
-
-    #individual {
-      background-color: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      border-style: solid;
-      overflow-y: scroll;
-    }
-
-    p {
-      color: white;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-    .flight {
-      fill: none;
-      stroke: white;
-      stroke-width: 1px;
-      stroke-opacity: 0.2;
-    }
-
-    .airport {
-      fill: white;
-      opacity: 0.5;
-      stroke: black;
-      stroke-width: 0.5;
-    }
-
-    .voronoi {
-      fill: none;
-      stroke: none;
-      stroke-width: 1px;
-    }
-
-    .highlight {
-      opacity: 1 !important;
-      stroke: orange !important;
-      stroke-width: 1.5px !important;
-      stroke-opacity: 0.8 !important;
-    }
-
-    g#voronoi {
-      pointer-events: all;
-    }
-
-    #tooltip {
-      font-size: 10pt;
-      font-weight: 900;
-      fill: white;
-      text-shadow: 1px 1px 0 #252525, 1px -1px 0 #252525, -1px 1px 0 #252525,
-        -1px -1px 0 #252525;
-    }
-
-    #birth {
-      position: absolute;
-      top: 20px;
-    }
-
-    #study {
-      position: absolute;
-      top: 50px;
-    }
-
-    #career {
-      position: absolute;
-      top: 80px;
-    }
-
-    #buttons {
-      position: absolute;
-      left: 43px;
-      /* display: inline-flex; */
-    }
-
-    /* #male {
-        position: absolute;
-        left: 5px;
-        top: 10px;
-      }
-      #female {
-        position: absolute;
-        left: 5px;
-        top: 40px;
-      }
-      #lla {
-        position: absolute;
-        left: 5px;
-        top: 70px;
-      } */
-    #circles {
-      position: absolute;
-      width: 60px;
-      top: 10px;
-      left: 0px;
-    }
-
-    .circ {
-      fill: white;
-      fill-opacity: 0.3;
-      stroke: black;
-      cursor: pointer;
-    }
-
-    button {
-      width: 40px;
-      margin: 1px;
-      cursor: pointer;
-      border: 1px solid #3a3a3a;
-      border-radius: 5px;
-      color: white;
-      padding: 5px 5px;
-      text-align: center;
-      font-family: "Montserrat";
-      background-color: #282832;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    #panel {
-      left: -2px;
-      background-color: #282832;
-      border: 2px solid #3a3a3a;
-      position: relative;
-      border-radius: 5px 5px 5px 5px;
-    }
-
-    #unilogo {
-      position: absolute;
-      left: 3px;
-      width: 35px;
-      z-index: 2;
-    }
-
-    #details {
-      position: absolute;
-      font-size: 12px;
-      z-index: 999;
-      background-color: black;
-      width: 120px;
-      color: white;
-      border-radius: 3px;
-      padding: 0.8em;
-      border: none;
-      box-shadow: 0 0px 0px 0 rgb(255 255 255 / 10%), 0 0px 5px 0 rgba(255, 255, 255, 0.2);
-      margin: auto;
-      display: none;
-      opacity: 0.8;
-    }
-
-    #header {
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.6);
-      height: 45px;
-      top: 0px;
-      left: 0px;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      color: white;
-      z-index: 900;
-    }
-
-    #title_img {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      height: 45px;
-    }
-
-    h1 {
-      color: white;
-      margin: auto;
-    }
-  </style>
+  <script src="js/d3.v6.min.js"></script>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
   <div id="header">
-    <img id="title_img" src="korup.png" alt="Logo" />
-    <h1 id="big_title">Európske Voľby</h1>
+    <img id="title_img" src="img/korup.png" alt="Logo" />
+    <h1 id="big_title">Európske Voľby 2019</h1>
     <!-- <button id="refresh_button" title="Reset"><i class="fa fa-refresh" style="color:black"></i></button>
     <button title="Information" id="info_button"><i class="fa fa-info"></i></button> -->
   </div>
@@ -217,55 +34,14 @@
       <text id="tooltip" style="display: none"></text>
     </svg>
   </div>
+  <div id="my_dataviz"></div>
   <div id="details"></div>
-  <!-- <div id="circles">
-      <img id="unilogo" src="logo.png" />
-      <svg
-        id="panel"
-        width="40px"
-        height="360px"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          id="first_line"
-          d="M 15 20 C 30 40, 30 100, 15 120"
-          stroke="white"
-          opacity="0.5"
-          fill="transparent"
-        />
-        <path
-          id="second_line"
-          d="M 15 120 C 30 150, 30 220, 15 240"
-          stroke="white"
-          opacity="0.5"
-          fill="transparent"
-        />
-        <path
-          id="third_line"
-          d="M 15 120 C 35 160, 40 320, 15 340"
-          stroke="white"
-          opacity="0.5"
-          fill="transparent"
-        />
-        <circle class="circ" id="birth" cx="15" cy="20" r="12" />
-        <circle class="circ" id="study" cx="15" cy="240" r="12" />
-        <circle class="circ" id="career" cx="15" cy="340" r="12" />
-      </svg>
-      <div id="buttons">
-        <button id="male" class="flo">M</button>
-        <button id="female" class="flo">F</button>
-        <button id="lla" class="flo">LLA</button>
-      </div>
-    </div>
-    <div id="individual"></div> -->
-  <!-- <script type="text/javascript" src="worldgeojson.js"></script> -->
   <script>
     let inner_screen_height = window.innerHeight,
       inner_screen_width = window.innerWidth;
 
     const width = inner_screen_width - 20;
-    const height = inner_screen_height - 20;
+    const height = inner_screen_height;
     const hypotenuse = Math.sqrt(width * width + height * height);
     $("#circles").css({ height: height });
     $("#panel, #buttons").css({ top: height / 2 - 200 });
@@ -286,6 +62,12 @@
       .attr("width", width)
       .attr("height", height);
 
+    const uk_context_data = [{ year: "1979", text: "1979" },
+    { year: "1984", text: "1984" }, { year: "1989", text: "1989" }, 
+    { year: "1994", text: "1994" }, { year: "1999", text: "1999" }, 
+    { year: "2004", text: "2004" }, { year: "2009", text: "2009" }, 
+    { year: "2014", text: "2014" }, { year: "2019", text: "2019" }]
+
     const g = {
       basemap: my_svg.select("g#basemap"),
       flights: my_svg.select("g#flights"),
@@ -299,24 +81,25 @@
       .geoOrthographic()
       .center([2, 54])
       .scale([width * 1.1])
-      .translate([width * 0.4, height / 2.5]);
-
+      .translate([width * 0.4, height / 3]);
 
     Promise.all([
-      d3.json("europe.json"),
-      d3.csv("election.csv"),
+      d3.csv("data/election.csv"),
+      d3.json("data/europe.json"),
+      d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv"),
     ]).then(drawMap)
 
     pathGenerator = d3.geoPath().projection(europeProjection);
     let color_scale = d3.scaleLinear().domain([1, 80]).range([0, 1]);
 
     function drawMap(files) {
-      let map = files[0]
-      let data = files[1]
+      let data = files[0]
+      let new_map = files[1]
+      let time = files[2]
 
       g.basemap
         .selectAll("path")
-        .data(map.features)
+        .data(new_map.features)
         .join("path")
         .attr("d", pathGenerator)
         .style("cursor", "pointer")
@@ -326,7 +109,7 @@
         .attr("fill", "white")
         .attr("opacity", function (d) {
           let the_country = data.find(function (m) {
-            return m.COUNTRY_ID == d.properties.name
+            return m.COUNTRY_ID == d.properties.NAME
           })
           if (the_country == undefined) {
             return 0
@@ -336,9 +119,8 @@
           }
         })
         .on("mousemove", function (d, i) {
-          console.log(d);
           let the_country = data.find(function (m) {
-            return m.COUNTRY_ID == i.properties.name
+            return m.COUNTRY_ID == i.properties.NAME
           })
           let the_rate
           if (the_country) {
@@ -348,7 +130,7 @@
             .style("display", "block")
             .style("left", d.x - 160 + "px")
             .style("top", d.y - 20 + "px")
-            .html(i.properties.name + `: ` + the_rate + `%`)
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
 
           d3.select(this)
             .style("stroke-width", 3)
@@ -366,7 +148,116 @@
           console.log(d, i);
 
         });
+
+      //// timeline
+      console.log(time);
+      const margin = { top: 10, right: 20, bottom: 20, left: 20 },
+        time_height = 30;
+
+      // append the svg object to the body of the page
+      const svg = d3.select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", time_height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // Parse the Data
+      var parseTime = d3.timeParse("%Y");
+      // X axis
+      const x = d3.scaleTime()
+        .domain([parseTime(1979), parseTime(2020)])
+        .range([0, width - margin.right - margin.left]);
+
+      svg.append("g")
+        .attr("transform", `translate(0, ${time_height})`)
+        .call(d3.axisBottom(x).ticks(20));
+
+
+      svg.selectAll(".context_line")
+        .data(uk_context_data)
+        .join(
+          enter => enter.append("line")
+            .attr("class", "context_line")
+            .attr("x1", function (d) { return x(parseTime(d.year)) })
+            .attr("x2", function (d) { return x(parseTime(d.year)) })
+            .attr("y1", function (d, i) { return 0 })
+            .attr("y2", time_height)
+            .attr("stroke-width", 1)
+            .attr("stroke", "white")
+            .attr("stroke-opacity", 0.3)
+            .attr("stroke-dasharray", "8,8")
+            .attr("opacity", 0)
+            .transition().duration(500)
+            .attr("opacity", 1)
+            .selection(),
+          update => update
+            .transition().duration(500)
+            .attr("x1", function (d) { return x(parseTime(d.year)) })
+            .attr("x2", function (d) { return x(parseTime(d.year)) })
+            .attr("y1", function (d, i) { return 0})
+            .attr("y2", time_height)
+            .selection(),
+          exit => exit
+            .transition().duration(500)
+            .attr("opacity", 0)
+            .remove()
+        )
+      svg.selectAll(".context_text")
+        .data(uk_context_data)
+        .join(
+          enter => enter.append("text")
+            .attr("class", "context_text")
+            .attr('text-anchor', 'middle')
+            .attr("fill", "white")
+            .attr("fill-opacity", 1)
+            .attr("font-size", "12px")
+            .attr("x", function (d) { return x(parseTime(d.year)) })
+            .attr("y", function (d, i) { return 0})
+            .text(function (d) { return d.text })
+            .attr("opacity", 0)
+            .transition().duration(500)
+            .attr("opacity", 1)
+            .selection(),
+          update => update
+            .transition().duration(500)
+            .attr("x", function (d) { return x(parseTime(d.year)) })
+            .attr("y", function (d, i) { return 0 })
+            .text(function (d) { return d.text })
+            .selection(),
+          exit => exit
+            .transition().duration(500)
+            .attr("opacity", 0)
+            .remove()
+        )
+
+      // // Add Y axis
+      // const y = d3.scaleLinear()
+      //   .domain([0, 13000])
+      //   .range([time_height, 0]);
+      // svg.append("g")
+      //   .call(d3.axisLeft(y));
+
+      // // Bars
+      // svg.selectAll("mybar")
+      //   .data(time)
+      //   .join("rect")
+      //   .attr("x", d => x(d.Country))
+      //   .attr("y", d => y(d.Value))
+      //   .attr("width", x.bandwidth())
+      //   .attr("height", d => time_height - y(d.Value))
+      //   .attr("fill", "#69b3a2")
+
+
+
+
+
+
+
+
     }
+
+
 
 
     // d3.json("europe.json").then(drawMap);
