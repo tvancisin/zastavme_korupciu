@@ -32,7 +32,6 @@ class ScrollerVis {
   step1(direction) {
     const vis = this;
     console.log("step1", direction);
-    // drawEu(new_map, "1979")
 
   }
 
@@ -40,53 +39,106 @@ class ScrollerVis {
     const vis = this;
     console.log("step2", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1984")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1984")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+    }
+    else if (direction == "up") {
+
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1979")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
 
   }
 
@@ -94,53 +146,106 @@ class ScrollerVis {
     const vis = this;
     console.log("step3", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1989")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1989")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+    }
+    else if (direction == "up") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1984")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
+
 
   }
 
@@ -148,106 +253,216 @@ class ScrollerVis {
     const vis = this;
     console.log("step4", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1994")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1994")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+
+
+    }
+    else if (direction == "up") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1989")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+    }
+
 
   }
   step5(direction) {
     const vis = this;
     console.log("step5", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1999")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1999")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
+    else if (direction == "up") {
+
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1994")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+    }
 
   }
 
@@ -255,54 +470,105 @@ class ScrollerVis {
     const vis = this;
     console.log("step6", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2004")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2004")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+    }
+    else if (direction == "up") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1999")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
 
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
 
   }
 
@@ -310,159 +576,319 @@ class ScrollerVis {
     const vis = this;
     console.log("step7", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2009")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2009")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
+    else if (direction == "up") {
+
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2004")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
   }
 
   step8(direction) {
     const vis = this;
     console.log("step8", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2014")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2014")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
+    else if (direction == "up") {
+
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2009")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+    }
   }
 
   step9(direction) {
     const vis = this;
     console.log("step9", direction);
 
-    let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2019")
-    const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-    console.log(the_year);
+    if (direction == "down") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2019")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
 
-    g.basemap
-      .selectAll("path")
-      .data(this.map.features)
-      .join("path")
-      .on("mousemove", function (d, i) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == i.properties.NAME
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
         })
-        let the_rate
-        if (the_country) {
-          the_rate = the_country.RATE
-        }
-        d3.select("#details")
-          .style("display", "block")
-          .style("left", d.x - 160 + "px")
-          .style("top", d.y - 20 + "px")
-          .html(i.properties.NAME + `: ` + the_rate + `%`)
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
 
-        d3.select(this)
-          .style("stroke-width", 3)
-          .style("stroke", "white")
-      })
-      .on("mouseleave", function (d, i) {
-        d3.select("#details")
-          .style("display", "none")
-
-        d3.select(this)
-          .style("stroke-width", 0.5)
-          .style("stroke", "black")
-      })
-      .transition()
-      .attr("d", pathGenerator)
-      .attr("opacity", function (d) {
-        let the_country = the_year.find(function (m) {
-          return m.COUNTRY_ID == d.properties.NAME
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
         })
-        if (the_country == undefined) {
-          return 0
-        }
-        else {
-          return color_scale(the_country.RATE)
-        }
-      })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
+    else if (direction == "up") {
+      let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2014")
+      const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+      console.log(the_year);
+
+      g.basemap
+        .selectAll("path")
+        .data(this.map.features)
+        .join("path")
+        .on("mousemove", function (d, i) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == i.properties.NAME
+          })
+          let the_rate
+          if (the_country) {
+            the_rate = the_country.RATE
+          }
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
+
+          d3.select(this)
+            .style("stroke-width", 3)
+            .style("stroke", "white")
+        })
+        .on("mouseleave", function (d, i) {
+          d3.select("#details")
+            .style("display", "none")
+
+          d3.select(this)
+            .style("stroke-width", 0.5)
+            .style("stroke", "black")
+        })
+        .transition()
+        .attr("d", pathGenerator)
+        .attr("opacity", function (d) {
+          let the_country = the_year.find(function (m) {
+            return m.COUNTRY_ID == d.properties.NAME
+          })
+          if (the_country == undefined) {
+            return 0
+          }
+          else {
+            return color_scale(the_country.RATE)
+          }
+        })
+
+    }
   }
 
   step10(direction) {

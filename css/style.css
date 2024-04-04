@@ -115,7 +115,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .graphic__vis__1 svg {
-  /* border: 1px dashed white; */
+  border: 1px dashed white;
   top: 50%;
   position: relative;
   -webkit-transform: translateY(-50%);
