@@ -920,32 +920,47 @@ class ScrollerVis {
     bars_g.append("g")
       .call(d3.axisLeft(y))
 
-    //Bars
-    bars_g.selectAll("myRect")
-      .data(this.files[3])
-      .join("rect")
-      .attr("x", x(0))
-      .attr("y", d => y(d.year))
-      .attr("rx", 3)
-      .attr("width", x(0))
-      .attr("height", y.bandwidth())
-      .attr("fill", "white")
-      .transition().delay(function (d, i) { return i * 100 })
-      .attr("width", d => x(d.in))
+    if (direction == "down") {
+      //Bars
+      bars_g.selectAll(".myRect")
+        .data(this.files[3])
+        .join("rect")
+        .attr("class", "myRect")
+        .attr("x", x(0))
+        .attr("y", d => y(d.year))
+        .attr("rx", 3)
+        .attr("width", x(0))
+        .attr("height", y.bandwidth())
+        .attr("fill", "white")
+        .transition().delay(function (d, i) { return i * 100 })
+        .attr("width", d => x(d.in))
 
-    reverse_g.selectAll(".bar")
-      .data(this.files[3])
-      .join("rect")
-      .attr("class", "bar")
-      .attr("height", y.bandwidth())
-      .attr("rx", 3)
-      .attr("y", function (d) { return y(d.year); })
-      .attr("width", function (d) { return 0; })
-      .attr("x", function (d) { return width / 2 })
-      .transition().delay(function (d, i) { return i * 100 })
-      .attr("x", function (d) { return reverse_x(d.out) })
-      .attr("width", function (d) { return reverse_x(0) - reverse_x(d.out); })
-      .attr("fill", "gray")
+      reverse_g.selectAll(".bar")
+        .data(this.files[3])
+        .join("rect")
+        .attr("class", "bar")
+        .attr("height", y.bandwidth())
+        .attr("rx", 3)
+        .attr("y", function (d) { return y(d.year); })
+        .attr("width", function (d) { return 0; })
+        .attr("x", function (d) { return width / 2 })
+        .transition().delay(function (d, i) { return i * 100 })
+        .attr("x", function (d) { return reverse_x(d.out) })
+        .attr("width", function (d) { return reverse_x(0) - reverse_x(d.out); })
+        .attr("fill", "gray")
+    }
+    else if (direction == "up") {
+      //Bars
+      bars_g.selectAll(".myRect")
+        .transition()
+        .attr("width", x(0))
+
+      reverse_g.selectAll(".bar")
+        .transition()
+        .attr("width", 0)
+        .attr("x", width / 2 )
+    }
+
 
   }
 
