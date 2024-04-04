@@ -104,6 +104,9 @@ class ScrollerVis {
       .style("font-size", "12px")
       .style("text-anchor", "middle");
 
+
+    d3.selectAll(".tick text").style("visibility", "hidden")
+
     setTimeout(function () {
       hovno = 1;
     }, 800);
