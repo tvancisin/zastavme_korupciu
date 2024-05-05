@@ -3,11 +3,11 @@ window.onbeforeunload = function () {
 }
 
 const width100 = window.innerWidth - 10,
-  height100 = window.innerHeight,
   width80 = width100 * 0.80,
   width20 = width100 * 0.20,
   width50 = width100 * 0.5;
 
+let height100;
 
   window.mobileCheck = function() {
     let check = false;
@@ -15,7 +15,10 @@ const width100 = window.innerWidth - 10,
     return check;
   };
   if (window.mobileCheck()){
-    height100 + 50 + px 
+    height100 = window.outerHeight
+  }
+  else {
+    height100 = window.innerHeight
   }
 
 
