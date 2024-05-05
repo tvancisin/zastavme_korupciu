@@ -15,7 +15,7 @@ let height100;
     return check;
   };
   if (window.mobileCheck()){
-    height100 = window.screen.height
+    height100 = window.outerHeight + 400 + "px"
   }
   else {
     height100 = window.innerHeight
