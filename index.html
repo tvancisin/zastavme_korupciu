@@ -12,59 +12,115 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js" crossorigin="anonymous"
     referrerpolicy="no-referrer"></script>
-  <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
+  <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' /> -->
+  <script src="https://unpkg.com/d3-geo-voronoi@1"></script>
   <link rel="icon" type="image/png" href="img/path2.png">
 </head>
 
 <body>
 
   <div id="header">
-    <h1 id="title_header">Európske Voľby</h1>
+    <h1 id="title_header">Európske Voľby 2024</h1>
     <img id="peace_img" src="img/korup.png" alt="PeaceRep Logo" />
   </div>
 
   <div id="story">
+    <div id="timeline"></div>
     <div id="separator" class="overview">
       <div id="ch1_div">
-        Rozvoj Europskej Unie a Ucast na Eurovolbach
+        Vznik Európskej únie sa datuje do povojnových rokov.<br>
+        Po skončení druhej svetovej vojny sa na kontinente<br>
+        začali objavovať nové myšlienky a iniciatívy<br>
+        zamerané na spoluprácu a pokojný rozvoj.<br><br><br>A ako sa to vyvíjalo?
+
+        <!-- Rozvoj Europskej Unie a Ucast na Eurovolbach -->
       </div>
     </div>
 
     <div class="graphic">
-
       <div class="graphic__vis">
         <div id="details"></div>
+        <div id="ind_line"></div>
+        <div id="perm">
+          <h3 style="margin: 0px;">Legenda</h3>
+          Cim jasnejsia farba, tym</br>
+          vacsia ucast na volbach.</br>
+          Prejdi mysou nad krajinu.
+        </div>
+        <div id="perm2"></div>
         <svg id="visualization">
+          <g id="voronoi"></g>
           <g id="basemap"></g>
           <g id="flights"></g>
           <g id="airports"></g>
-          <g id="voronoi"></g>
-          <text id="tooltip" style="display: none"></text>
         </svg>
       </div>
 
       <div class="graphic__prose">
-        <p class="trigger one" data-step="0" style="height: 600px; font-size: 20px;">1979</p>
-        <p class="trigger two" data-step="1" style="height: 600px; font-size: 20px;">1984</p>
-        <p class="trigger three" data-step="2" style="height: 600px; font-size: 20px;">1989</p>
-        <p class="trigger four" data-step="3" style="height: 600px; font-size: 20px;">1994</p>
-        <p class="trigger five" data-step="4" style="height: 600px; font-size: 20px;">1999</p>
-        <p class="trigger six" data-step="5" style="height: 600px; font-size: 20px;">2004</p>
-        <p class="trigger seven" data-step="6" style="height: 600px; font-size: 20px;">2009</p>
-        <p class="trigger eight" data-step="7" style="height: 600px; font-size: 20px;">2014</p>
-        <p class="trigger nine" data-step="8" style="height: 600px; font-size: 20px;">2019</p>
+        <div class="trigger one" data-step="0">
+          <p> <br>Sest krajín podpisuje zmluvu o
+            spoločnom riadení uhoľného a oceliarskeho priemyslu,
+            aby nemohla žiadna krajina
+            obrátiť svoje vojnové zbrane proti inej. </p>
+        </div>
+        <div class="trigger two" data-step="1">
+          <p>K siestim krajinam sa pridava Dansko,<br>
+            Irsko a Spojene Kralovstvo.
+          </p>
+        </div>
+        <div class="trigger three" data-step="2">
+          <p>
+            Európski občania si po prvýkrát priamo<br>
+            volia poslancov Európskeho parlamentu.
+          </p>
+        </div>
+        <div class="trigger four" data-step="3">
+          <p>
+            Do Europskej Unie vstupuje Grecko.
+          </p>
+        </div>
+        <div class="trigger five" data-step="4">
+          <p>
+            V druhych Europskych Volbach uz volia aj
+            obcania Grecka.
+          </p>
+        </div>
+        <div class="trigger six" data-step="5">
+        </div>
+        <div class="trigger seven" data-step="6">
+        </div>
+        <div class="trigger eight" data-step="7">
+        </div>
+        <div class="trigger nine" data-step="8">
+        </div>
+        <div class="trigger ten" data-step="9">
+        </div>
+        <div class="trigger eleven" data-step="10">
+        </div>
+        <div class="trigger twelve" data-step="11">
+        </div>
+        <div class="trigger thirteen" data-step="12">
+        </div>
+        <div class="trigger fourteen" data-step="13">
+        </div>
+        <div class="trigger fifteen" data-step="14">
+        </div>
+        <div class="trigger sixteen" data-step="15">
+        </div>
+        <div class="trigger seventeen" data-step="16" style="height: 700px;">
+        </div>
       </div>
 
     </div>
 
     <div id="separator1" class="overview">
       <div id="ch1_div">
-        Peniaze z Europsej Unie
+        Pokracovanie nabuduce...
       </div>
     </div>
 
-    <div class="graphic1">
+    <!-- <div class="graphic1">
       <div class="graphic__vis__1">
         <svg id="visualization1"></svg>
       </div>
@@ -74,21 +130,27 @@
       </div>
     </div>
 
-    <div id="separator1" class="overview">
-      <div id="ch1_div">
-       Volnost Cestovania 
+    <div id="separator2" class="overview">
+      <div id="ch2_div">
+        Volnost Cestovania
       </div>
     </div>
 
-    <div class="graphic1">
-      <div class="graphic__vis__1">
-        <svg id="visualization1"></svg>
+    <div class="graphic2">
+      <div class="graphic__vis__2">
+        <svg id="visualization2">
+          <g id="basemap2"></g>
+          <g id="flights2"></g>
+          <g id="airports2"></g>
+          <g id="voronoi2"></g>
+          <text id="tooltip" style="display: none"></text>
+        </svg>
       </div>
-      <div class="graphic__prose__1">
-        <p class="trigger ten" data-step="9" style="height: 600px; font-size: 20px;">Text</p>
-        <p class="trigger eleven" data-step="10" style="height: 600px; font-size: 20px;">Text</p>
+      <div class="graphic__prose__2">
+        <p class="trigger twelve" data-step="11" style="height: 600px; font-size: 20px;">Text</p>
+        <p class="trigger thirteen" data-step="12" style="height: 600px; font-size: 20px;">Text</p>
       </div>
-    </div>
+    </div> -->
 
   </div>
 
