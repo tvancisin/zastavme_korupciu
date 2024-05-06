@@ -8,24 +8,9 @@ const width100 = window.innerWidth - 10,
   width20 = width100 * 0.20,
   width50 = width100 * 0.5;
 
-// let height100 = window.innerHeight
-
 const margin = { top: 45, right: 10, bottom: 0, left: 10 },
   height = height100 - margin.top - margin.bottom,
   width = width80 - margin.top - margin.bottom;
-
-
-
-window.onresize =(e) => {
-  let h = window.innerHeight;
-  d3.selectAll(".graphic__vis, .graphic__vis__1, .graphic__vis__2, #visualization, #visualization1, #visualization2")
-    .style("height", h+ "px")
-  d3.selectAll("#separator, #separator1, #separator2")
-  .style("height", h+ "px")
-  let hh = h - margin.top - margin.bottom;
-  d3.select("#ind_line")
-    .style("top", h / 2 + "px")
-}
 
 //adjusting width and height for current screen
 d3.selectAll("#story")
