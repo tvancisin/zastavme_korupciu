@@ -107,7 +107,7 @@ timeline_svg.append("g")
     1986, 1989, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014, 2019, 2020]).tickFormat(d3.format("d")))
   .selectAll("text")
   .attr("font-family", "Montserrat")
-  .attr("font-size", "12px")
+  .attr("font-size", "14px")
   .attr("transform", "translate(0,10)rotate(0)")
   .style("text-anchor", "end");
 
