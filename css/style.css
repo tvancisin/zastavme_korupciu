@@ -1,8 +1,59 @@
+#contentCapsule{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  z-index: 9999;
+  text-align: center;
+}
+
+h6 {
+  margin: 2px;
+}
+
 body {
+  margin: 0;
   color: white;
   font-family: 'Montserrat';
   background-color: black;
+  overflow: hidden;
 }
+
+#description{
+  font-size: larger;
+  position: relative;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.button{
+  position: relative;
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  /* border: 3px solid #04AA6D; */
+}
+
+.button1:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
 
 #header {
   position: fixed;
@@ -285,7 +336,7 @@ p {
   width: 200px;
   height: 80px;
   bottom: 0px;
-  left: 200px;
+  right: 200px;
   z-index: 9999;
   font-size: 12px;
   background-color: rgba(0, 0, 0, 0);

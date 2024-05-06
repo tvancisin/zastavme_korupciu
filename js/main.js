@@ -29,6 +29,7 @@ d3.select("#timeline").style("top", height + 10 + "px")
 d3.select("#ind_line")
   .style("top", height / 2 + "px")
   .style("left", width100 - 20 + "px")
+d3.select("#perm2").style("right", width20)
 
 
 const legend_svg = d3.select("#perm2")
@@ -43,11 +44,11 @@ let leg_data = [1, 2]
 legend_svg.selectAll("line")
   .data(leg_data)
   .join("line")
-  .attr("x1", function(d,i){
-    return i * 80
+  .attr("x1", function (d, i) {
+    return i * 70
   })
-  .attr("x2", function(d,i){
-    return i * 80
+  .attr("x2", function (d, i) {
+    return i * 70
   })
   .attr("y1", function (d) {
     return 20;
@@ -60,7 +61,7 @@ legend_svg.selectAll("circle")
   .data(leg_data)
   .join("circle")
   .attr("cx", function (d, i) {
-    return i * 80
+    return i * 70
   })
   .attr("cy", 20)
   .attr("r", 7)
@@ -73,22 +74,20 @@ legend_svg.selectAll("circle")
     }
   })
   .attr("stroke", "none")
-  legend_svg
+legend_svg
   .append("text")
   .attr("x", -10)
   .attr("y", 50)
   .style("fill", "white")
   .text("EuroVolby")
   .style("font-size", "12px")
-  legend_svg
+legend_svg
   .append("text")
-  .attr("x", 70)
+  .attr("x", 60)
   .attr("y", 50)
   .style("fill", "white")
   .style("font-size", "12px")
   .text("Rozsirenie EU")
-
-
 
 const timeline_svg = d3.select("#timeline")
   .append("svg")
@@ -663,5 +662,30 @@ Promise.all([
   //         offset: '50%',
   //       });
   //     });
+
+  d3.select("#contentCapsule")
+    .append("button")
+    .attr("class", "button button1")
+    .text("noľem")
+    .style("top", h / 2 + "px")
+    .style("border-color", "#04AA6D")
+
+  d3.select("#circles").remove()
+
+  function myStopFunction() {
+    clearInterval(myVar);
+  }
+
+  d3.select(".button1")
+    .on("click", function () {
+      myStopFunction();
+      d3.select("input")
+        .style("visibility", "visible")
+      d3.select("body").style("overflow-y", "visible")
+      $("#contentCapsule").css("display", "none");
+    })
+
+
+
 })
   .catch(error => console.error(error));
