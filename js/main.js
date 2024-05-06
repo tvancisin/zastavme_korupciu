@@ -104,7 +104,7 @@ const y = d3.scaleLinear()
 timeline_svg.append("g")
   .attr("class", "axisWhite")
   .call(d3.axisLeft(y).tickValues([1950, 1973, 1979, 1981, 1984,
-    1986, 1989, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014, 2019, 2020]))
+    1986, 1989, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014, 2019, 2020]).tickFormat(d3.format("d")))
   .selectAll("text")
   .attr("font-family", "Montserrat")
   .attr("font-size", "12px")
