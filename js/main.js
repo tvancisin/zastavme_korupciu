@@ -2,6 +2,31 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
+function toggleContent(parent, p1, p2) {
+  console.log(parent, p1, p2);
+
+  var button = d3.select('.' + parent + ' button').node();
+  var paragraph1 = d3.select('#' + p1).node();
+  var paragraph2 = d3.select('#' + p2).node();
+
+  // Check if the button is currently inside paragraph1
+  if (button.parentElement === paragraph2) {
+      // Move the button back to paragraph1
+      d3.select(paragraph1).append(() => button);
+      // Show paragraph2
+      d3.select(paragraph2).classed('hidden', true);
+      // Change button text to "Show More"
+      button.textContent = "viac";
+  } else {
+      // Move the button to paragraph2
+      d3.select(paragraph2).append(() => button);
+      // Show paragraph2
+      d3.select(paragraph2).classed('hidden', false);
+      // Change button text to "Show Less"
+      button.textContent = "menej";
+  }
+}
+
 const width100 = window.innerWidth - 10,
   height100 = window.innerHeight,
   width80 = width100 * 0.80,
@@ -103,7 +128,7 @@ const y = d3.scaleLinear()
 
 timeline_svg.append("g")
   .attr("class", "axisWhite")
-  .call(d3.axisLeft(y).tickValues([1950, 1973, 1979, 1981, 1984,
+  .call(d3.axisLeft(y).tickValues([1950, 1957, 1973, 1979, 1981, 1984,
     1986, 1989, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014, 2019, 2020]).tickFormat(d3.format("d")))
   .selectAll("text")
   .attr("font-family", "Montserrat")
@@ -111,7 +136,7 @@ timeline_svg.append("g")
   .attr("transform", "translate(0,10)rotate(0)")
   .style("text-anchor", "end");
 
-let data = [1950, 1973, 1979, 1981, 1984,
+let data = [1950, 1957, 1973, 1979, 1981, 1984,
   1986, 1989, 1994, 1995, 1999, 2004, 2007,
   2009, 2013, 2014, 2019, 2020]
 
@@ -162,7 +187,11 @@ timeline_svg.selectAll("mycircle")
 
 d3.select(".one")
   .style("height", function (d) {
-    return y(1973) + "px"
+    return y(1957) + "px"
+  })
+d3.select(".one_half")
+  .style("height", function (d) {
+    return y(1973) - y(1957) + "px"
   })
 d3.select(".two")
   .style("height", function (d) {
@@ -240,6 +269,7 @@ const reverse_g = bars_svg.append("g")
 const my_svg = d3.select("#visualization")
   .attr("width", width)
   .attr("height", height)
+  .attr("viewBox", [0, 0, width, height])
 
 const g = {
   basemap: my_svg.select("g#basemap"),

@@ -8,7 +8,7 @@ d3.select("#contentCapsule").append("div")
     .attr("id", "description")
     .style("top", h/2 + "px")
     .html(`Vznik a Rozvoj Európskej Únie.` + `<br>` +
-    // `<h6>Autori: Lukáš Kožina, Tomáš Vančišín</h6>`+
+    `<h6>Autori: Lukáš Kožina, Tomáš Vančišín</h6>`+
     `<h6>[na mobile nefunguje zatial. sorry. skus pc]</h6>`)
 
 // initial screen counter

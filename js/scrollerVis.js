@@ -373,7 +373,6 @@ const drawBundle = function (loc, line) {
 
     return bundle;
   }
-
 }
 
 
