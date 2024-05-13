@@ -54,42 +54,42 @@ d3.select("#timeline").style("top", height + 10 + "px")
 d3.select("#ind_line")
   .style("top", height / 2 + "px")
   .style("left", width100 - 20 + "px")
-d3.select("#perm2").style("right", width20)
+d3.select("#perm2").style("left", "5px")
+// d3.select("#perm").style("top", height100/2 - 20 + "px")
 
 
 const legend_svg = d3.select("#perm2")
   .append("svg")
   .attr("width", 220)
-  .attr("height", 80)
+  .attr("height", 200)
   .append("g")
-  .attr("transform", `translate(10,20)`);
+  .attr("transform", `translate(-10,20)`);
 
 let leg_data = [1, 2]
-// Circles and lines for the legend
 legend_svg.selectAll("line")
   .data(leg_data)
   .join("line")
-  .attr("x1", function (d, i) {
-    return i * 70
+  .attr("y1", function (d, i) {
+    return i * 30
   })
-  .attr("x2", function (d, i) {
-    return i * 70
+  .attr("y2", function (d, i) {
+    return i * 30
   })
-  .attr("y1", function (d) {
+  .attr("x1", function (d) {
     return 20;
   })
-  .attr("y2", function (d) {
-    return 40;
+  .attr("x2", function (d) {
+    return 70;
   })
   .attr("stroke", "grey")
 legend_svg.selectAll("circle")
   .data(leg_data)
   .join("circle")
-  .attr("cx", function (d, i) {
-    return i * 70
+  .attr("cy", function (d, i) {
+    return i * 30
   })
-  .attr("cy", 20)
-  .attr("r", 7)
+  .attr("cx", 20)
+  .attr("r", 10)
   .style("fill", function (d) {
     if (d == 2) {
       return "#7a89d3"
@@ -101,18 +101,18 @@ legend_svg.selectAll("circle")
   .attr("stroke", "none")
 legend_svg
   .append("text")
-  .attr("x", -10)
-  .attr("y", 50)
+  .attr("x", 80)
+  .attr("y", 0)
   .style("fill", "white")
-  .text("EuroVolby")
+  .text("EuroVoľby")
   .style("font-size", "12px")
 legend_svg
   .append("text")
-  .attr("x", 60)
-  .attr("y", 50)
+  .attr("x", 80)
+  .attr("y", 30)
   .style("fill", "white")
   .style("font-size", "12px")
-  .text("Rozsirenie EU")
+  .text("Rozširovanie EU")
 
 const timeline_svg = d3.select("#timeline")
   .append("svg")
@@ -283,7 +283,7 @@ g.voronoi
 
 let europeProjection = d3
   .geoOrthographic()
-  .center([2, 54])
+  .center([8, 54])
   .scale([width * 1.3])
   .translate([width * 0.38, height / 2.3]);
 
