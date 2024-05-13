@@ -25,22 +25,24 @@ const drawPolygons = function (map, year, type) {
     .data(map.features)
     .join("path")
     .on("mousemove", function (d, i) {
-      let the_country = year.find(function (m) {
-        return m.COUNTRY_ID == i.properties.NAME
-      })
-      let the_rate
-      if (the_country) {
-        the_rate = the_country.RATE
-      }
-      d3.select("#details")
-        .style("display", "block")
-        .style("left", d.x - 160 + "px")
-        .style("top", d.y - 20 + "px")
-        .html(i.properties.NAME + `: ` + the_rate + `%`)
+      if (type == "elec") {
+        let the_country = year.find(function (m) {
+          return m.COUNTRY_ID == i.properties.NAME
+        })
+        let the_rate
+        if (the_country) {
+          the_rate = the_country.RATE
+          d3.select("#details")
+            .style("display", "block")
+            .style("left", d.x - 160 + "px")
+            .style("top", d.y - 20 + "px")
+            .html(i.properties.NAME + `: ` + the_rate + `%`)
 
-      d3.select(this)
-        .style("stroke-width", 2)
-        .style("stroke", "black")
+          d3.select(this)
+            .style("stroke-width", 2)
+            .style("stroke", "black")
+        }
+      }
     })
     .on("mouseleave", function (d, i) {
       d3.select("#details")
