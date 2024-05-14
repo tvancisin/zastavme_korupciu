@@ -60,7 +60,7 @@ d3.select("#perm2").style("left", "5px")
 
 const legend_svg = d3.select("#perm2")
   .append("svg")
-  .attr("width", 220)
+  .attr("width", 300)
   .attr("height", 200)
   .append("g")
   .attr("transform", `translate(-10,20)`);
@@ -91,7 +91,7 @@ legend_svg.selectAll("circle")
   .attr("cx", 20)
   .attr("r", 10)
   .style("fill", function (d) {
-    if (d == 2) {
+    if (d == 1) {
       return "#7a89d3"
     }
     else {
@@ -102,17 +102,17 @@ legend_svg.selectAll("circle")
 legend_svg
   .append("text")
   .attr("x", 80)
-  .attr("y", 0)
+  .attr("y", 3)
   .style("fill", "white")
-  .text("EuroVoľby")
+  .text("Historické Udalosti")
   .style("font-size", "12px")
 legend_svg
   .append("text")
   .attr("x", 80)
-  .attr("y", 30)
+  .attr("y", 33)
   .style("fill", "white")
   .style("font-size", "12px")
-  .text("Rozširovanie EU")
+  .text("Európske Voľby")
 
 const timeline_svg = d3.select("#timeline")
   .append("svg")
@@ -129,7 +129,7 @@ const y = d3.scaleLinear()
 timeline_svg.append("g")
   .attr("class", "axisWhite")
   .call(d3.axisLeft(y).tickValues([1950, 1957, 1973, 1979, 1981, 1984,
-    1986, 1989, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014, 2019, 2020]).tickFormat(d3.format("d")))
+    1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014, 2019, 2020]).tickFormat(d3.format("d")))
   .selectAll("text")
   .attr("font-family", "Montserrat")
   .attr("font-size", "14px")
@@ -137,7 +137,7 @@ timeline_svg.append("g")
   .style("text-anchor", "end");
 
 let data = [1950, 1957, 1973, 1979, 1981, 1984,
-  1986, 1989, 1994, 1995, 1999, 2004, 2007,
+  1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007,
   2009, 2013, 2014, 2019, 2020]
 
 // Lines
@@ -215,7 +215,11 @@ d3.select(".six")
   })
 d3.select(".seven")
   .style("height", function (d) {
-    return y(1994) - y(1989) + "px"
+    return y(1993) - y(1989) + "px"
+  })
+d3.select(".seven_half")
+  .style("height", function (d) {
+    return y(1994) - y(1993) + "px"
   })
 d3.select(".eight")
   .style("height", function (d) {
