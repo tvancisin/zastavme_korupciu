@@ -11,19 +11,19 @@ function toggleContent(parent, p1, p2) {
 
   // Check if the button is currently inside paragraph1
   if (button.parentElement === paragraph2) {
-      // Move the button back to paragraph1
-      d3.select(paragraph1).append(() => button);
-      // Show paragraph2
-      d3.select(paragraph2).classed('hidden', true);
-      // Change button text to "Show More"
-      button.textContent = "viac";
+    // Move the button back to paragraph1
+    d3.select(paragraph1).append(() => button);
+    // Show paragraph2
+    d3.select(paragraph2).classed('hidden', true);
+    // Change button text to "Show More"
+    button.textContent = "viac";
   } else {
-      // Move the button to paragraph2
-      d3.select(paragraph2).append(() => button);
-      // Show paragraph2
-      d3.select(paragraph2).classed('hidden', false);
-      // Change button text to "Show Less"
-      button.textContent = "menej";
+    // Move the button to paragraph2
+    d3.select(paragraph2).append(() => button);
+    // Show paragraph2
+    d3.select(paragraph2).classed('hidden', false);
+    // Change button text to "Show Less"
+    button.textContent = "menej";
   }
 }
 
@@ -55,8 +55,30 @@ d3.select("#ind_line")
   .style("top", height / 2 + "px")
   .style("left", width100 - 20 + "px")
 d3.select("#perm2").style("left", "5px")
-// d3.select("#perm").style("top", height100/2 - 20 + "px")
+d3.select("#info_content").style("height", height / 2 + "px")
 
+d3.select("#peace_process")
+  .style("height", height - 10 + "px")
+  .style("width", 400 + "px")
+  .style("right", - 420 + "px")
+
+d3.selectAll("#peace_title_div")
+  .style("width", 400 + "px")
+
+let counter_collab = 0;
+d3.select("#info_button").on("click", function () {
+  counter_collab += 1;
+  if (counter_collab % 2 !== 0) {
+    d3.select("#peace_process")
+      .transition().duration(500)
+      .style("right", 10 + "px")
+  }
+  else {
+    d3.select("#peace_process")
+      .transition().duration(500)
+      .style("right", -420 + "px")
+  }
+})
 
 const legend_svg = d3.select("#perm2")
   .append("svg")
@@ -129,7 +151,8 @@ const y = d3.scaleLinear()
 timeline_svg.append("g")
   .attr("class", "axisWhite")
   .call(d3.axisLeft(y).tickValues([1950, 1957, 1973, 1979, 1981, 1984,
-    1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014, 2019, 2020]).tickFormat(d3.format("d")))
+    1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007, 2009, 2013, 2014,
+    2016, 2019, 2020]).tickFormat(d3.format("d")))
   .selectAll("text")
   .attr("font-family", "Montserrat")
   .attr("font-size", "14px")
@@ -138,7 +161,7 @@ timeline_svg.append("g")
 
 let data = [1950, 1957, 1973, 1979, 1981, 1984,
   1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007,
-  2009, 2013, 2014, 2019, 2020]
+  2009, 2013, 2014, 2016, 2019, 2020]
 
 // Lines
 timeline_svg.selectAll("myline")
@@ -251,9 +274,13 @@ d3.select(".fourteen")
   })
 d3.select(".fifteen")
   .style("height", function (d) {
-    return y(2019) - y(2014) + "px"
+    return y(2016) - y(2014) + "px"
   })
 d3.select(".sixteen")
+  .style("height", function (d) {
+    return y(2019) - y(2016) + "px"
+  })
+d3.select(".seventeen")
   .style("height", function (d) {
     return y(2020) - y(2019) + "px"
   })
@@ -287,7 +314,7 @@ g.voronoi
 
 let europeProjection = d3
   .geoOrthographic()
-  .center([8, 54])
+  .center([8, 53])
   .scale([width * 1.3])
   .translate([width * 0.38, height / 2.3]);
 

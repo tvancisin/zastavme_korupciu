@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js" crossorigin="anonymous"
@@ -24,6 +25,15 @@
   <div id="header">
     <h1 id="title_header">Európske Voľby 2024</h1>
     <img id="peace_img" src="img/korup.png" alt="PeaceRep Logo" />
+    <button title="Information" id="info_button"><i class="fa fa-info"></i></button>
+  </div>
+
+  <div id="peace_process">
+    <div id="peace_title_div">
+      <h2>Zdroje</h2>
+    </div>
+    <div id="peace_content">
+    </div>
   </div>
 
   <div id="story">
@@ -60,7 +70,8 @@
 
       <div class="graphic__prose">
         <div class="trigger one" data-step="0">
-          <p id="paragraph1">Po prejave Roberta Schumana,
+          <p id="paragraph1">Po prejave <a href="https://sk.wikipedia.org/wiki/Robert_Schuman" target="_blank">Roberta
+              Schumana</a>,
             francúzskeho ministra zahraničných vecí, podpísalo šesť
             krajín zmluvu o spoločnom riadení uhoľného a
             oceliarskeho priemyslu.</br>
@@ -162,24 +173,65 @@
             <button id="more_info" onclick="toggleContent('ten', 'paragraph13', 'paragraph14')">viac</button>
           </p>
           <p id="paragraph14" class="additional-content hidden">
-          Bankovky a mince budú zavedené neskôr.
-          Do eurozóny sa zapojí 11 krajín, no Dánsko, Švédsko a 
-          Spojené kráľovstvo sa rozhodnú počkať.</br>
+            Bankovky a mince budú zavedené neskôr.
+            Do eurozóny sa zapojí 11 krajín, no Dánsko, Švédsko a
+            Spojené kráľovstvo sa rozhodnú počkať.</br>
           </p>
         </div>
         <div class="trigger eleven" data-step="11">
+          <p>
+            Rozdelenie Európy na východnú a západnú sa definitívne končí
+            rozšírením Európskej únie o 10 členských krajín
+            vrátane Slovenska. Išlo o historicky najväčšie rozšírenie Únie.
+          </p>
         </div>
         <div class="trigger twelve" data-step="12">
+          <p>
+            Bulharsko a Rumunsko sa stávajú členskými štátmi Európskej
+            únie po tom, čo im pomalšie prijímanie reforiem v oblasti súdnictva a
+            boja s korupciou neumožnilo vstup v roku 2004.
+          </p>
         </div>
         <div class="trigger thirteen" data-step="13">
+          <p>
+            Po ratifikácii všetkými krajinami v decembri 2009 nadobúda
+            účinnosť Lisabonská zmluva, ktorá má nahradiť neúspešnú
+            Zmluvu o Ústave pre Európu. Cieľom je urobiť EÚ demokratickejšou,
+            transparentnejšou a efektívnejšou, aby sa vyrovnala s kliamtickými zmenami,
+            bezpečnosťou a udržateľným rozvojom.
+          </p>
         </div>
         <div class="trigger fourteen" data-step="14">
+          <p>
+            Chorvátsku sa podarilo naplniť prísnejšie prístupové rokovania,
+            ktoré stanovila Európska rada v decembri 2006 a vstupuje do Európskej únie.
+          </p>
         </div>
         <div class="trigger fifteen" data-step="15">
+          <p>
+            Po vstupe Chorvátska z roku 2013 tvorí Európsku úniu už 28
+            členských krajín. Vzťahy Európskej únie s Ruskom ovplyvnilo
+            násilné odobratie Krymu Ukrajine Ruskom.
+          </p>
         </div>
         <div class="trigger sixteen" data-step="16">
+          <p>
+            V roku 2016 občania Spojeného Kráľovstva rozhodli,
+            že krajina vystúpi z Európskej Únie. Pomer hlasov
+            bol veľmi tesný: 51.89% za a 48.11% proti.
+          </p>
         </div>
-        <div class="trigger seventeen" data-step="17" style="height: 700px;">
+        <div class="trigger seventeen" data-step="17">
+          <p>
+            Prvé po-Brexitové voľby, v ktorých ešte hlasovali
+            občania Spojeného Kráľovstva ukázali vzostup záujmu
+            o Európsku Úniu a dianie v nej.
+          </p>
+        </div>
+        <div class="trigger eighteen" data-step="18" style="height: 700px;">
+          <p>
+            Británia oficiálne vystupuje z Euópskej Únie.
+          </p>
         </div>
       </div>
 
