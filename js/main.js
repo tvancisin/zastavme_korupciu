@@ -35,6 +35,15 @@ const margin = { top: 45, right: 10, bottom: 0, left: 10 },
   width = width80 - margin.top - margin.bottom;
 
 //adjusting width and height for current screen
+d3.select("#peace_process")
+  .style("height", height - 20 + "px")
+  .style("width", 400 + "px")
+  .style("right", - 420 + "px")
+d3.select("#peace_content")
+  .style("height", height - 90 + "px")
+d3.selectAll("#peace_title_div")
+  .style("width", 400 + "px")
+
 d3.selectAll("#story")
   .style("width", width100 + "px")
 d3.selectAll(".graphic__vis, .graphic__vis__1, .graphic__vis__2, #visualization, #visualization1, #visualization2")
@@ -53,15 +62,7 @@ d3.select("#ind_line")
   .style("left", width100 - 20 + "px")
 d3.select("#perm2").style("left", "5px")
 
-d3.select("#peace_process")
-  .style("height", height - 20 + "px")
-  .style("width", 400 + "px")
-  .style("right", - 420 + "px")
-d3.select("#peace_content")
-  .style("height", height - 100 + "px")
 
-d3.selectAll("#peace_title_div")
-  .style("width", 400 + "px")
 
 let counter_collab = 0;
 d3.select("#info_button").on("click", function () {

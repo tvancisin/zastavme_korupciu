@@ -484,17 +484,17 @@ h3 {
 }
 
 #peace_process {
+  position: fixed;
   background-color: rgb(30, 30, 30);
   color: white;
-  position: absolute;
   top: 55px;
   z-index: 900;
   border-radius: 5px;
+
 }
 
 #peace_title_div {
   text-align: center;
-  /* position: fixed; */
   border-radius: 5px;
 }
 
@@ -512,6 +512,23 @@ h2 {
   position: absolute;
   overflow-y: auto;
   top: 39px;
+}
+
+
+#peace_content::-webkit-scrollbar {
+  width: 10px;
+}
+
+#peace_content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#peace_content::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+#peace_content::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 #content_paragraph {

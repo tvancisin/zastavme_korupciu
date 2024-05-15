@@ -810,10 +810,6 @@ class ScrollerVis {
 
   // }
 
-
-
-
-
   goToStep(stepIndex, direction) {
     if (hovno === 1) {
       this[this.config.steps[stepIndex]](direction);
