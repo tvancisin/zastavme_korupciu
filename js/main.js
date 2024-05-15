@@ -3,12 +3,9 @@ window.onbeforeunload = function () {
 }
 
 function toggleContent(parent, p1, p2) {
-  console.log(parent, p1, p2);
-
   var button = d3.select('.' + parent + ' button').node();
   var paragraph1 = d3.select('#' + p1).node();
   var paragraph2 = d3.select('#' + p2).node();
-
   // Check if the button is currently inside paragraph1
   if (button.parentElement === paragraph2) {
     // Move the button back to paragraph1
@@ -55,12 +52,13 @@ d3.select("#ind_line")
   .style("top", height / 2 + "px")
   .style("left", width100 - 20 + "px")
 d3.select("#perm2").style("left", "5px")
-d3.select("#info_content").style("height", height / 2 + "px")
 
 d3.select("#peace_process")
-  .style("height", height - 10 + "px")
+  .style("height", height - 20 + "px")
   .style("width", 400 + "px")
   .style("right", - 420 + "px")
+d3.select("#peace_content")
+  .style("height", height - 100 + "px")
 
 d3.selectAll("#peace_title_div")
   .style("width", 400 + "px")
@@ -370,11 +368,10 @@ let scales = {
 Promise.all([
   d3.csv("data/election.csv"),
   d3.json("data/europe.json"),
-  d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv"),
   d3.csv("data/slov_eu_money.csv"),
   d3.csv("data/capitals.csv"),
 ]).then(function (files) {
-  let capital_raw = files[4];
+  let capital_raw = files[3];
   let capitals_object = [];
   let capitals_connections_object = [];
 

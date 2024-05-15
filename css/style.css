@@ -484,18 +484,17 @@ h3 {
 }
 
 #peace_process {
-  overflow-y: auto;
   background-color: rgb(30, 30, 30);
   color: white;
-  position: fixed;
-  top: 45px;
+  position: absolute;
+  top: 55px;
   z-index: 900;
   border-radius: 5px;
 }
 
 #peace_title_div {
   text-align: center;
-  position: fixed;
+  /* position: fixed; */
   border-radius: 5px;
 }
 
@@ -513,4 +512,15 @@ h2 {
   position: absolute;
   overflow-y: auto;
   top: 39px;
+}
+
+#content_paragraph {
+  position: relative;
+  top: 0px;
+  margin: 0px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding-right: 10px;
+  padding: 10px;
+  text-align: left;
 }
