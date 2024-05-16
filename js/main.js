@@ -34,6 +34,8 @@ const margin = { top: 45, right: 10, bottom: 0, left: 10 },
   height = height100 - margin.top - margin.bottom,
   width = width80 - margin.top - margin.bottom;
 
+d3.select("#title_image").style("height", height/3 + "px")
+
 //adjusting width and height for current screen
 d3.select("#peace_process")
   .style("height", height - 20 + "px")
