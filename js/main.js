@@ -166,11 +166,26 @@ let data = [1950, 1957, 1973, 1979, 1981, 1984,
   1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007,
   2009, 2013, 2014, 2016, 2019, 2020]
 
+let data1 = [1950, 1951, 1952, 1953, 1954, 1955, 
+  1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 
+  1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 
+  1972, 1973, 1979, 1981, 1984,
+  1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007,
+  2009, 2013, 2014, 2016, 2019, 2020]
+
 // Lines
 timeline_svg.selectAll("myline")
-  .data(data)
+  .data(data1)
   .join("line")
-  .attr("x1", -60)
+  .attr("x1", function (d) {
+    if (data.includes(d)){
+      return -60
+    }
+    else {
+      return -5
+    }
+
+  })
   .attr("x2", 0)
   .attr("y1", function (d) {
     return y(d);
@@ -178,7 +193,8 @@ timeline_svg.selectAll("myline")
   .attr("y2", function (d) {
     return y(d);
   })
-  .attr("stroke", "grey")
+  .attr("stroke", "white")
+  .attr("stroke-width", 0.5)
 
 let election_years = [1979, 1984, 1989, 1994, 1999,
   2004, 2009, 2014, 2019]
