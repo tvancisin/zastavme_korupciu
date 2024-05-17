@@ -8,6 +8,7 @@ function toggleContent(parent, p1, p2) {
   var paragraph2 = d3.select('#' + p2).node();
   // Check if the button is currently inside paragraph1
   if (button.parentElement === paragraph2) {
+    console.log("move to par1");
     // Move the button back to paragraph1
     d3.select(paragraph1).append(() => button);
     // Show paragraph2
@@ -15,6 +16,7 @@ function toggleContent(parent, p1, p2) {
     // Change button text to "Show More"
     button.textContent = "viac";
   } else {
+    console.log("move to par2");
     // Move the button to paragraph2
     d3.select(paragraph2).append(() => button);
     // Show paragraph2

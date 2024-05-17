@@ -243,8 +243,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 #ch1_div,
 #ch2_div {
+  position: relative;
   font-size: 20px;
-  text-align: center;
   margin: auto;
   text-align: center;
 }
