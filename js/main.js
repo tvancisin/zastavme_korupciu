@@ -1,6 +1,11 @@
+d3.select("#contentCapsule")
+  .style("height", window.innerHeight + "px")
+  .style("width", window.innerWidth + "px")
+
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
+
 
 function toggleContent(parent, p1, p2) {
   var button = d3.select('.' + parent + ' button').node();
@@ -340,7 +345,7 @@ let europeProjection = d3
   .geoOrthographic()
   .center([3, 60])
   .scale([width * 1.4])
-  .rotate([8,5,7])
+  .rotate([8, 5, 7])
   .translate([width * 0.38, height / 2.3]);
 
 function distance(source, target) {
@@ -419,7 +424,7 @@ Promise.all([
 
   let all_locs = typemyAirport(capitals_object)
   let all_line = typemyFlight(capitals_connections_object)
-  
+
   let graticuleGenerator = d3.geoGraticule();
 
   let graticules = graticuleGenerator();
@@ -753,15 +758,29 @@ Promise.all([
     clearInterval(myVar);
   }
 
-  d3.select(".button1")
-    .on("click", function () {
-      myStopFunction();
-      d3.select("input")
-        .style("visibility", "visible")
-      d3.select("body").style("overflow-y", "visible")
-      $("#contentCapsule").css("display", "none");
-    })
+  function isMobileDevice() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const mobileRegex = /android|avantgo|blackberry|bada\/|bb10|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od|ad)|kindle|lge |maemo|meego.+mobile|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm(os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series40|series60|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i;
+    return mobileRegex.test(userAgent);
+  }
 
+  if (isMobileDevice()) {
+    console.log("You are using a mobile device.");
+  }
+  else {
+    console.log("You are not using a mobile device.");
+    d3.select(".button1").style("visibility", "visible")
+    d3.select(".button1")
+      .on("click", function () {
+        myStopFunction();
+        d3.select("input")
+          .style("visibility", "visible")
+        d3.select("body").style("overflow-y", "visible")
+        $("#contentCapsule").css("display", "none");
+        d3.selectAll("#story, #header")
+          .style("visibility", "visible")
+      })
+  }
 
 
 })

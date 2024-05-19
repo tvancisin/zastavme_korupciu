@@ -1,17 +1,3 @@
-#contentCapsule {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-color: black;
-  color: rgb(255, 255, 255);
-  z-index: 9999;
-  text-align: center;
-}
-
-h6 {
-  margin: 2px;
-}
-
 body {
   margin: 0;
   color: white;
@@ -20,11 +6,43 @@ body {
   overflow: hidden;
 }
 
-#description {
-  font-size: larger;
+#contentCapsule {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  z-index: 9999;
+  text-align: center;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+#header {
+  position: fixed;
+  /* background-color: #0F1826; */
+  background-color: black;
+  height: 45px;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  width: 100%;
+  z-index: 999;
+  visibility: hidden;
+}
+
+#circles {
   position: relative;
-  padding-left: 100px;
-  padding-right: 100px;
+}
+
+
+h6 {
+  margin: 2px;
+}
+
+#description {
+  position: relative;
+  font-size: larger;
 }
 
 .button {
@@ -47,7 +65,7 @@ body {
 .button1 {
   background-color: white;
   color: black;
-  /* border: 3px solid #04AA6D; */
+  visibility: hidden;
 }
 
 .button1:hover {
@@ -56,17 +74,6 @@ body {
 }
 
 
-#header {
-  position: fixed;
-  /* background-color: #0F1826; */
-  background-color: black;
-  height: 45px;
-  top: 0px;
-  left: 0px;
-  display: flex;
-  width: 100%;
-  z-index: 999;
-}
 
 #peace_img {
   position: absolute;
@@ -83,6 +90,7 @@ h1 {
   position: absolute;
   left: 0px;
   top: 45px;
+  visibility: hidden;
 }
 
 body::-webkit-scrollbar {
