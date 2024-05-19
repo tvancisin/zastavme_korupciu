@@ -1,11 +1,27 @@
-d3.select("#contentCapsule")
-  .style("height", window.innerHeight + "px")
-  .style("width", window.innerWidth + "px")
+function isMobileDevice() {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const mobileRegex = /android|avantgo|blackberry|bada\/|bb10|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od|ad)|kindle|lge |maemo|meego.+mobile|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm(os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series40|series60|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i;
+  return mobileRegex.test(userAgent);
+}
+
+var mw = screen.width;
+var mh = screen.height;
+
+if (isMobileDevice()) {
+  console.log("You are using a mobile device.");
+  d3.select("#contentCapsule")
+    .style("height", mh + "px")
+    .style("width", mw + "px")
+}
+else {
+  d3.select("#contentCapsule")
+    .style("height", window.innerHeight + "px")
+    .style("width", window.innerWidth + "px")
+}
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
-
 
 function toggleContent(parent, p1, p2) {
   var button = d3.select('.' + parent + ' button').node();
@@ -756,12 +772,6 @@ Promise.all([
 
   function myStopFunction() {
     clearInterval(myVar);
-  }
-
-  function isMobileDevice() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const mobileRegex = /android|avantgo|blackberry|bada\/|bb10|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od|ad)|kindle|lge |maemo|meego.+mobile|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm(os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series40|series60|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i;
-    return mobileRegex.test(userAgent);
   }
 
   if (isMobileDevice()) {
