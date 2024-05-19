@@ -7,8 +7,6 @@ let circleData = ["data"];
 var mw = screen.width;
 var mh = screen.height;
 
-console.log(mw,mh);
-
 function isMobileDevice() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     const mobileRegex = /android|avantgo|blackberry|bada\/|bb10|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od|ad)|kindle|lge |maemo|meego.+mobile|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm(os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series40|series60|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i;
@@ -20,7 +18,7 @@ if (isMobileDevice()) {
         .attr("id", "description")
         .style("top", mh / 2 + "px")
         .html(`rozvoj a vznik európskej únie.` + `<br>` +
-            `<h6>texty: lukáš kožina, veb: tomáš vančišín</h6>` +
+            `<h6>texty: lukáš kožina, web: tomáš vančišín</h6>` +
             `<h6>[na mobile nefunguje zatial. sorry. skus pc]</h6>`)
 }
 else {
@@ -28,7 +26,7 @@ else {
         .attr("id", "description")
         .style("top", h / 2 + "px")
         .html(`rozvoj a vznik európskej únie.` + `<br>` +
-            `<h6>texty: lukáš kožina, veb: tomáš vančišín</h6>` +
+            `<h6>texty: lukáš kožina, web: tomáš vančišín</h6>` +
             `<h6>[na mobile nefunguje zatial. sorry. skus pc]</h6>`)
 }
 

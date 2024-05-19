@@ -764,7 +764,7 @@ Promise.all([
   d3.select("#contentCapsule")
     .append("button")
     .attr("class", "button button1")
-    .text("noľem / dik / néz / поглянь / pozri")
+    .text("pozri / noľem /  néz / dik / поглянь")
     .style("top", h / 2 + "px")
     .style("border-color", "#04AA6D")
 
@@ -778,7 +778,6 @@ Promise.all([
     console.log("You are using a mobile device.");
   }
   else {
-    console.log("You are not using a mobile device.");
     d3.select(".button1").style("visibility", "visible")
     d3.select(".button1")
       .on("click", function () {
