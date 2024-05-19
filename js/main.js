@@ -36,7 +36,7 @@ const margin = { top: 45, right: 10, bottom: 0, left: 10 },
   height = height100 - margin.top - margin.bottom,
   width = width80 - margin.top - margin.bottom;
 
-d3.select("#title_image").style("height", height/3 + "px")
+d3.select("#title_image").style("height", height / 3 + "px")
 
 //adjusting width and height for current screen
 d3.select("#peace_process")
@@ -63,7 +63,7 @@ d3.selectAll(".trigger").style("padding-top", 0 + "px")
 d3.select("#timeline").style("top", height + 10 + "px")
 d3.select("#ind_line")
   .style("top", height / 2 + "px")
-  // .style("left", width100 - 20 + "px")
+// .style("left", width100 - 20 + "px")
 d3.select("#perm2").style("right", "5px")
 
 let counter_collab = 0;
@@ -105,7 +105,7 @@ legend_svg.selectAll("line")
     return 280;
   })
   .attr("stroke", "white")
-  
+
 legend_svg.selectAll("circle")
   .data(leg_data)
   .join("circle")
@@ -167,9 +167,9 @@ let data = [1950, 1957, 1973, 1979, 1981, 1984,
   1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007,
   2009, 2013, 2014, 2016, 2019, 2020]
 
-let data1 = [1950, 1951, 1952, 1953, 1954, 1955, 
-  1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 
-  1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 
+let data1 = [1950, 1951, 1952, 1953, 1954, 1955,
+  1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963,
+  1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971,
   1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979,
   1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987,
   1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
@@ -183,7 +183,7 @@ timeline_svg.selectAll("myline")
   .data(data1)
   .join("line")
   .attr("x1", function (d) {
-    if (data.includes(d)){
+    if (data.includes(d)) {
       return 60
     }
     else {
@@ -338,8 +338,9 @@ const g = {
 
 let europeProjection = d3
   .geoOrthographic()
-  .center([3, 53])
-  .scale([width * 1.3])
+  .center([3, 60])
+  .scale([width * 1.4])
+  .rotate([8,5,7])
   .translate([width * 0.38, height / 2.3]);
 
 function distance(source, target) {
@@ -418,8 +419,23 @@ Promise.all([
 
   let all_locs = typemyAirport(capitals_object)
   let all_line = typemyFlight(capitals_connections_object)
+  
+  let graticuleGenerator = d3.geoGraticule();
+
+  let graticules = graticuleGenerator();
+  // returns a GeoJSON object representing the graticule
 
   pathGenerator = d3.geoPath().projection(europeProjection);
+
+  g.voronoi
+    .selectAll("path.graticule")
+    .data([graticules])
+    .join("path")
+    .attr("d", pathGenerator(graticules))
+    .attr("stroke", "gray")
+    .attr("fill", "none")
+    .attr("stroke-width", 0.5)
+    .attr("opacity", 0.6)
 
   let new_map = files[1]
 

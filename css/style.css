@@ -278,8 +278,8 @@ p {
   background-color: black;
   border: none;
   color: gray;
-  padding-right: 0px;
-  text-align: right;
+  padding-left: 0px;
+  /* text-align: right; */
   text-decoration: none;
   display: inline-block;
   font-size: 14px;

@@ -7,8 +7,8 @@ let circleData = ["data"];
 d3.select("#contentCapsule").append("div")
     .attr("id", "description")
     .style("top", h/2 + "px")
-    .html(`Vznik a Rozvoj Európskej Únie.` + `<br>` +
-    `<h6>Texty: Lukáš Kožina, Web/Vizualizácia: Tomáš Vančišín</h6>`+
+    .html(`rozvoj a vznik európskej únie.` + `<br>` +
+    `<h6>texty: lukáš kožina, veb: tomáš vančišín</h6>`+
     `<h6>[na mobile nefunguje zatial. sorry. skus pc]</h6>`)
 
 // initial screen counter
