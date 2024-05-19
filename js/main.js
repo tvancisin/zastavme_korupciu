@@ -55,7 +55,7 @@ d3.selectAll(".graphic__vis, .graphic__vis__1, .graphic__vis__2, #visualization,
   .style("height", height100 + "px")
 d3.selectAll(".graphic__prose, .graphic__prose__1, .graphic__prose__2")
   .style("width", width20 + "px")
-  .style("left", width80 + "px")
+  .style("left", 20 + "px")
 d3.selectAll("#separator, #separator1, #separator2")
   .style("width", width100 + "px")
   .style("height", height100 + "px")
@@ -63,10 +63,8 @@ d3.selectAll(".trigger").style("padding-top", 0 + "px")
 d3.select("#timeline").style("top", height + 10 + "px")
 d3.select("#ind_line")
   .style("top", height / 2 + "px")
-  .style("left", width100 - 20 + "px")
-d3.select("#perm2").style("left", "5px")
-
-
+  // .style("left", width100 - 20 + "px")
+d3.select("#perm2").style("right", "5px")
 
 let counter_collab = 0;
 d3.select("#info_button").on("click", function () {
@@ -74,7 +72,7 @@ d3.select("#info_button").on("click", function () {
   if (counter_collab % 2 !== 0) {
     d3.select("#peace_process")
       .transition().duration(500)
-      .style("right", 10 + "px")
+      .style("right", 5 + "px")
   }
   else {
     d3.select("#peace_process")
@@ -86,9 +84,9 @@ d3.select("#info_button").on("click", function () {
 const legend_svg = d3.select("#perm2")
   .append("svg")
   .attr("width", 300)
-  .attr("height", 200)
+  .attr("height", 100)
   .append("g")
-  .attr("transform", `translate(-10,20)`);
+  .attr("transform", `translate(10,20)`);
 
 let leg_data = [1, 2]
 legend_svg.selectAll("line")
@@ -101,19 +99,20 @@ legend_svg.selectAll("line")
     return i * 30
   })
   .attr("x1", function (d) {
-    return 20;
+    return 230;
   })
   .attr("x2", function (d) {
-    return 70;
+    return 280;
   })
-  .attr("stroke", "grey")
+  .attr("stroke", "white")
+  
 legend_svg.selectAll("circle")
   .data(leg_data)
   .join("circle")
   .attr("cy", function (d, i) {
     return i * 30
   })
-  .attr("cx", 20)
+  .attr("cx", 280)
   .attr("r", 10)
   .style("fill", function (d) {
     if (d == 1) {
@@ -126,16 +125,18 @@ legend_svg.selectAll("circle")
   .attr("stroke", "none")
 legend_svg
   .append("text")
-  .attr("x", 80)
+  .attr("x", 220)
   .attr("y", 3)
   .style("fill", "white")
+  .style("direction", "rtl")
   .text("Historické Udalosti")
   .style("font-size", "12px")
 legend_svg
   .append("text")
-  .attr("x", 80)
+  .attr("x", 220)
   .attr("y", 33)
   .style("fill", "white")
+  .style("direction", "rtl")
   .style("font-size", "12px")
   .text("Európske Voľby")
 
@@ -144,7 +145,7 @@ const timeline_svg = d3.select("#timeline")
   .attr("width", 50 + margin.left + margin.right)
   .attr("height", 10000 + margin.top + margin.bottom)
   .append("g")
-  .attr("transform", `translate(70,50)`);
+  .attr("transform", `translate(0,50)`);
 
 const y = d3.scaleLinear()
   .domain([2025, 1950])
@@ -159,7 +160,7 @@ timeline_svg.append("g")
   .selectAll("text")
   .attr("font-family", "Montserrat")
   .attr("font-size", "14px")
-  .attr("transform", "translate(0,10)rotate(0)")
+  .attr("transform", "translate(50,10)")
   .style("text-anchor", "end");
 
 let data = [1950, 1957, 1973, 1979, 1981, 1984,
@@ -169,9 +170,13 @@ let data = [1950, 1957, 1973, 1979, 1981, 1984,
 let data1 = [1950, 1951, 1952, 1953, 1954, 1955, 
   1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 
   1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 
-  1972, 1973, 1979, 1981, 1984,
-  1986, 1989, 1993, 1994, 1995, 1999, 2004, 2007,
-  2009, 2013, 2014, 2016, 2019, 2020]
+  1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979,
+  1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987,
+  1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
+  1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+  2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+  2012, 2013, 2013, 2014, 2015, 2016, 2017, 2018,
+  2019, 2020]
 
 // Lines
 timeline_svg.selectAll("myline")
@@ -179,10 +184,10 @@ timeline_svg.selectAll("myline")
   .join("line")
   .attr("x1", function (d) {
     if (data.includes(d)){
-      return -60
+      return 60
     }
     else {
-      return -5
+      return 6
     }
 
   })
@@ -194,7 +199,7 @@ timeline_svg.selectAll("myline")
     return y(d);
   })
   .attr("stroke", "white")
-  .attr("stroke-width", 0.5)
+  .attr("stroke-width", 1)
 
 let election_years = [1979, 1984, 1989, 1994, 1999,
   2004, 2009, 2014, 2019]
@@ -203,7 +208,7 @@ let election_years = [1979, 1984, 1989, 1994, 1999,
 timeline_svg.selectAll("mycircle")
   .data(data)
   .join("circle")
-  .attr("cx", -60)
+  .attr("cx", 60)
   .attr("cy", function (d) { return y(d); })
   .attr("r", function (d) {
     return 8
@@ -328,12 +333,12 @@ const g = {
   voronoi: my_svg.select("g#voronoi"),
 };
 
-g.voronoi
-  .attr("transform", `translate(${0}, ${3})`);
+// g.voronoi
+//   .attr("transform", `translate(${0}, ${3})`);
 
 let europeProjection = d3
   .geoOrthographic()
-  .center([8, 53])
+  .center([3, 53])
   .scale([width * 1.3])
   .translate([width * 0.38, height / 2.3]);
 
@@ -411,11 +416,8 @@ Promise.all([
     }
   }
 
-  // console.log(capitals_object, capitals_connections_object);
-
   let all_locs = typemyAirport(capitals_object)
   let all_line = typemyFlight(capitals_connections_object)
-
 
   pathGenerator = d3.geoPath().projection(europeProjection);
 
@@ -426,26 +428,6 @@ Promise.all([
   console.log(the_year);
   let find_second_election_year = d3.groups(files[0], (d) => d.YEAR == "2019")
   const the_second_year = find_second_election_year.filter(subarray => subarray[0] === true)[0][1];
-
-  // g.voronoi
-  //   .selectAll("path")
-  //   .data(new_map.features)
-  //   .join("path")
-  //   .attr("d", pathGenerator)
-  //   .style("cursor", "pointer")
-  //   .attr("stroke", "none")
-  //   .attr("fill", "#232323")
-  //   .attr("opacity", function (d) {
-  //     let the_country = the_second_year.find(function (m) {
-  //       return m.COUNTRY_ID == d.properties.NAME
-  //     })
-  //     if (the_country == undefined) {
-  //       return 0
-  //     }
-  //     else {
-  //       return 1
-  //     }
-  //   })
 
   g.basemap
     .selectAll("path")
@@ -512,35 +494,35 @@ Promise.all([
   // });
 
 
-  second_g.basemap
-    .selectAll("path")
-    .data(new_map.features)
-    .join("path")
-    .attr("d", pathGenerator)
-    .style("cursor", "pointer")
-    .attr("stroke", "#3b3b3b")
-    .attr("stroke-width", 1)
-    .attr("class", "country")
-    .attr("fill", function (d) {
-      if (d.properties.NAME == "Slovakia") {
-        return "red"
-      }
-      else {
-        return "#3b3b3b"
-      }
+  // second_g.basemap
+  //   .selectAll("path")
+  //   .data(new_map.features)
+  //   .join("path")
+  //   .attr("d", pathGenerator)
+  //   .style("cursor", "pointer")
+  //   .attr("stroke", "#3b3b3b")
+  //   .attr("stroke-width", 1)
+  //   .attr("class", "country")
+  //   .attr("fill", function (d) {
+  //     if (d.properties.NAME == "Slovakia") {
+  //       return "red"
+  //     }
+  //     else {
+  //       return "#3b3b3b"
+  //     }
 
-    })
-    .attr("opacity", function (d) {
-      let the_country = the_second_year.find(function (m) {
-        return m.COUNTRY_ID == d.properties.NAME
-      })
-      if (the_country == undefined) {
-        return 0
-      }
-      else {
-        return 1
-      }
-    })
+  //   })
+  //   .attr("opacity", function (d) {
+  //     let the_country = the_second_year.find(function (m) {
+  //       return m.COUNTRY_ID == d.properties.NAME
+  //     })
+  //     if (the_country == undefined) {
+  //       return 0
+  //     }
+  //     else {
+  //       return 1
+  //     }
+  //   })
 
   let scrollerVis;
   const prepare_data = function () {
@@ -745,7 +727,7 @@ Promise.all([
   d3.select("#contentCapsule")
     .append("button")
     .attr("class", "button button1")
-    .text("noľem")
+    .text("noľem / dik / néz / подивіться / pozri")
     .style("top", h / 2 + "px")
     .style("border-color", "#04AA6D")
 

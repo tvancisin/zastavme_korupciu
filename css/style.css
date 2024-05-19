@@ -124,15 +124,12 @@ body::-webkit-scrollbar-thumb:hover {
 .graphic__prose,
 .graphic__prose__1,
 .graphic__prose__2 {
+  left: 0px;
   display: block;
   position: relative;
   font-size: 14px;
-  right: 5px;
   z-index: 99;
-  /* pointer-events: none; */
 }
-
-
 
 .graphic__vis {
   position: absolute;
@@ -272,7 +269,7 @@ p {
   /* box-shadow: 0px 1px 2px #232323, 0px -1px 2px #232323; */
   padding-right: 20px;
   padding-top: 10px;
-  text-align: right;
+  text-align: left;
 }
 
 #more_info {
@@ -289,14 +286,8 @@ p {
   cursor: pointer;
 }
 
-#timeline {
-  pointer-events: none;
-}
-
 .additional-content {
   position: relative;
-  text-align: right;
-  /* background-color: none; */
   margin: 0px;
   padding-top: 0px;
 
@@ -308,8 +299,9 @@ p {
 
 #timeline {
   position: absolute;
-  right: 0px;
+  left: 0px;
   z-index: 100;
+  pointer-events: none;
 }
 
 .axisWhite line {
@@ -318,7 +310,7 @@ p {
 
 .axisWhite path {
   stroke: gray;
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 .axisWhite text {
@@ -359,7 +351,7 @@ p {
 #perm {
   position: absolute;
   bottom: 5px;
-  left: 5px;
+  right: 5px;
   z-index: 100;
   font-size: 12px;
   background-color: rgba(0, 0, 0, 0);
@@ -372,20 +364,18 @@ p {
   position: absolute;
   width: 300px;
   top: 50px;
-  height: 200px;
+  height: 100px;
   z-index: 9999;
   font-size: 12px;
   background-color: rgba(0, 0, 0, 0);
-  padding: 8px;
-  border-radius: 3px;
 }
 
 #ind_line {
   position: absolute;
   left: 20px;
   z-index: 100;
-  /* width: 50px; */
-  height: 0px;
+  width: 50px;
+  height: 1px;
   background: red;
 }
 
@@ -539,4 +529,12 @@ h2 {
   padding-right: 10px;
   padding: 10px;
   text-align: left;
+}
+
+#timeline_expl {
+  position: absolute;
+  left: 5px;
+  bottom: 50px;
+  color: white;
+  font-size: 15px;
 }

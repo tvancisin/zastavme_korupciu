@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Zastavme Korupciu</title>
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link rel="stylesheet" href="css/newcss.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/d3-geo-voronoi@1"></script>
+    <link rel="icon" type="image/png" href="img/path2.png">
+    <script src="js/noframework.waypoints.min.js"></script>
+    <script src="js/d3.v6.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="story">
+        <div id="separator" class="overview"></div>
+
+        <div class="graphic">
+            <div class="graphic__vis">
+                <svg id="visualization">
+                    <g id="voronoi"></g>
+                    <g id="basemap"></g>
+                    <g id="flights"></g>
+                    <g id="airports"></g>
+                </svg>
+            </div>
+
+            <div class="graphic__prose">
+                <div class="trigger one" data-step="0">
+                    teAifjoweifjweoifjweojfwoiefjxt
+                </div>
+                <div class="trigger two" data-step="1">
+                    texfweoifpaioweflawiuehfliawuehfliuht
+                </div>
+            </div>
+        </div>
+        <div id="separator" class="overview"></div>
+</body>
+
+<script>
+
+    class ScrollerVis {
+        constructor(_config) {
+            this.config = {
+                another: _config.storyElement,
+                steps: ['step1', 'step2', 'step3', 'step4', 'step5', 'step6',
+                    'step7', 'step8', 'step9', 'step10', 'step11', 'step12',
+                    'step13', 'step14', 'step15', 'step16', 'step17', 'step18', 'step19']
+            }
+            // this.files = _files,
+            //     this.map = _map,
+            //     this.locations = _locs,
+            //     this.lines = _lines
+            this.initVis();
+        }
+
+        initVis() {
+            let vis = this;
+            console.log(vis);
+        }
+
+        step1(direction) {
+            const vis = this;
+            console.log("step1", direction);
+        }
+
+        step2(direction) {
+            const vis = this;
+            console.log("step2", direction);
+        }
+
+        goToStep(stepIndex, direction) {
+            this[this.config.steps[stepIndex]](direction);
+        }
+    }
+
+
+
+    Promise.all([
+        d3.csv("data/election.csv"),
+        d3.json("data/europe.json"),
+    ]).then(function (files) {
+        let new_map = files[1]
+        let find_election_year = d3.groups(files[0], (d) => d.YEAR == "1950")
+        const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
+
+
+        // select elements
+        let graphicEl = document.querySelector('.graphic');
+        let graphicVisEl = graphicEl.querySelector('.graphic__vis');
+        let triggerEls = selectionToArray(graphicEl.querySelectorAll('.trigger'));
+
+        let scrollerVis = new ScrollerVis({ storyElement: '#story' })
+
+        function selectionToArray(selection) {
+            var len = selection.length
+            var result = []
+            for (var i = 0; i < len; i++) {
+                result.push(selection[i])
+            }
+            return result
+        }
+
+        let toggle = function (fixed, bottom) {
+            if (fixed) graphicVisEl.classList.add('is-fixed')
+            else graphicVisEl.classList.remove('is-fixed')
+
+            if (bottom) graphicVisEl.classList.add('is-bottom')
+            else graphicVisEl.classList.remove('is-bottom')
+        }
+
+        // setup a waypoint trigger for each trigger element
+        let waypoints = triggerEls.map(function (el) {
+            // get the step, cast as number					
+            let step = +el.getAttribute('data-step')
+            return new Waypoint({
+                element: el, // our trigger element
+                handler: function (direction) {
+                    // if the direction is down then we use that number,
+                    // else, we want to trigger the previous one
+                    var nextStep = direction === 'down' ? step : Math.max(0, step)
+                    console.log(nextStep);
+                    scrollerVis.goToStep(nextStep, direction);
+
+                    // tell our graphic to update with a specific step
+                    // graphic.update(nextStep)
+                },
+                offset: '45%',  // trigger halfway up the viewport
+            })
+        })
+
+
+        const enterWaypoint = new Waypoint({
+            element: graphicEl,
+            handler: function (direction) {
+                let fixed = direction === 'down'
+                let bottom = false
+                toggle(fixed, bottom)
+            },
+        })
+        const exitWaypoint = new Waypoint({
+            element: graphicEl,
+            handler: function (direction) {
+                let fixed = direction === 'up'
+                let bottom = !fixed
+                toggle(fixed, bottom)
+            },
+            offset: 'bottom-in-view',
+        })
+
+
+
+
+        function drawChart() {
+            const width = window.innerWidth - 20,
+                height = window.innerHeight - 20;
+            d3.selectAll(".trigger").style("width", width * 0.2 + "px")
+            d3.selectAll("#separator").style("width", width + "px")
+
+            // first map  
+            const my_svg = d3.select("#visualization")
+                // .attr("viewBox", `0 0 ` + width + ` ` + height)
+                .attr("width", width)
+                .attr("height", height)
+            // .attr("viewBox", [0, 0, width, height])
+
+            const g = {
+                basemap: my_svg.select("g#basemap"),
+                flights: my_svg.select("g#flights"),
+                airports: my_svg.select("g#airports"),
+                voronoi: my_svg.select("g#voronoi"),
+            };
+
+            let europeProjection = d3
+                .geoOrthographic()
+                .center([8, 53])
+                .scale([width])
+                .translate([width * 0.38, height / 2.3]);
+
+            pathGenerator = d3.geoPath().projection(europeProjection);
+
+            g.basemap
+                .selectAll("path")
+                .data(new_map.features)
+                .join("path")
+                .attr("d", pathGenerator)
+                .style("cursor", "pointer")
+                .attr("stroke", "none")
+                .attr("class", "country")
+                .attr("fill", function (d) {
+                    let the_country = the_year.find(function (m) {
+                        return m.COUNTRY_ID == d.properties.NAME
+                    })
+                    if (the_country == undefined) {
+                        return "#1e2d45"
+                    }
+                    else {
+                        return "#7A89D3"
+                    }
+                })
+
+            // // get the current width of the div where the chart appear, and attribute it to Svg
+            // currentWidth = parseInt(d3.select('#div_basicResize').style('width'), 10)
+            // Svg.attr("width", currentWidth)
+
+            // // Update the X scale and Axis (here the 20 is just to have a bit of margin)
+            // x.range([20, currentWidth - 20]);
+            // xAxis.call(d3.axisBottom(x))
+
+            // // Add the last information needed for the circles: their X position
+            // myCircles
+            //     .attr("cx", function (d) { return x(d) })
+        }
+
+
+        // Initialize the chart
+        drawChart()
+
+        window.addEventListener('resize', drawChart);
+
+
+    })
+</script>
