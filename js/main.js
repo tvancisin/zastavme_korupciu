@@ -727,7 +727,7 @@ Promise.all([
   d3.select("#contentCapsule")
     .append("button")
     .attr("class", "button button1")
-    .text("noľem / dik / néz / подивіться / pozri")
+    .text("noľem / dik / néz / поглянь / pozri")
     .style("top", h / 2 + "px")
     .style("border-color", "#04AA6D")
 
