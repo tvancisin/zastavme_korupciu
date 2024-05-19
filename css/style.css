@@ -275,11 +275,10 @@ p {
 #more_info {
   position: relative;
   z-index: 999;
-  background-color: black;
   border: none;
+  background-color: rgba(0, 0, 0, 0);
   color: gray;
   padding-left: 0px;
-  /* text-align: right; */
   text-decoration: none;
   display: inline-block;
   font-size: 14px;

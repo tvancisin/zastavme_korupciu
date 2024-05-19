@@ -89,22 +89,22 @@ const legend_svg = d3.select("#perm2")
   .attr("transform", `translate(10,20)`);
 
 let leg_data = [1, 2]
-legend_svg.selectAll("line")
-  .data(leg_data)
-  .join("line")
-  .attr("y1", function (d, i) {
-    return i * 30
-  })
-  .attr("y2", function (d, i) {
-    return i * 30
-  })
-  .attr("x1", function (d) {
-    return 230;
-  })
-  .attr("x2", function (d) {
-    return 280;
-  })
-  .attr("stroke", "white")
+// legend_svg.selectAll("line")
+//   .data(leg_data)
+//   .join("line")
+//   .attr("y1", function (d, i) {
+//     return i * 30
+//   })
+//   .attr("y2", function (d, i) {
+//     return i * 30
+//   })
+//   .attr("x1", function (d) {
+//     return 230;
+//   })
+//   .attr("x2", function (d) {
+//     return 280;
+//   })
+//   .attr("stroke", "white")
 
 legend_svg.selectAll("circle")
   .data(leg_data)
@@ -112,7 +112,7 @@ legend_svg.selectAll("circle")
   .attr("cy", function (d, i) {
     return i * 30
   })
-  .attr("cx", 280)
+  .attr("cx", 270)
   .attr("r", 10)
   .style("fill", function (d) {
     if (d == 1) {
@@ -125,7 +125,7 @@ legend_svg.selectAll("circle")
   .attr("stroke", "none")
 legend_svg
   .append("text")
-  .attr("x", 220)
+  .attr("x", 250)
   .attr("y", 3)
   .style("fill", "white")
   .style("direction", "rtl")
@@ -133,7 +133,7 @@ legend_svg
   .style("font-size", "12px")
 legend_svg
   .append("text")
-  .attr("x", 220)
+  .attr("x", 250)
   .attr("y", 33)
   .style("fill", "white")
   .style("direction", "rtl")
@@ -434,8 +434,8 @@ Promise.all([
     .attr("d", pathGenerator(graticules))
     .attr("stroke", "gray")
     .attr("fill", "none")
-    .attr("stroke-width", 0.5)
-    .attr("opacity", 0.6)
+    .attr("stroke-width", 1)
+    .attr("opacity", 0.3)
 
   let new_map = files[1]
 
