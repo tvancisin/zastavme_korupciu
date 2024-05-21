@@ -18,7 +18,10 @@ bars_g.append("g")
   .style("text-anchor", "end");
 
 let initial_countries = ["Belgium", "France", "Germany", "Italy", "Luxembourg", "Netherlands"]
-const drawPolygons = function (map, year, type) {
+const drawPolygons = function (map, year, type, to_remove) {
+  if (to_remove.length !== 0) {
+    initial_countries = initial_countries.filter(element => !to_remove.includes(element));
+  }
 
   g.basemap
     .selectAll("path")
@@ -51,8 +54,8 @@ const drawPolygons = function (map, year, type) {
       d3.select(this)
         .style("stroke", "none")
     })
-    .transition().duration(500)
     .attr("d", pathGenerator)
+    .transition().duration(500)
     .attr("fill", function (d) {
       if (type == "exp") {
         let the_country = year.find(function (m) {
@@ -62,7 +65,13 @@ const drawPolygons = function (map, year, type) {
           return "#1e2d45"
         }
         else {
-          return "#7A89D3"
+          if (initial_countries.includes(d.properties.NAME)) {
+            return "#7A89D3"
+          }
+          else {
+            initial_countries.push(d.properties.NAME)
+            return "#FBE565"
+          }
         }
       }
       else {
@@ -433,34 +442,36 @@ class ScrollerVis {
   step2(direction) {
     const vis = this;
     console.log("step2", direction);
+    let rmv_ctries = ["Denmark", "United Kingdom", "Ireland"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1973")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", [])
 
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1950")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
     }
   }
 
   step3(direction) {
     const vis = this;
     console.log("step3", direction);
+    let rmv_ctries = ["Denmark", "United Kingdom", "Ireland"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1979")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1973")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
   }
@@ -468,17 +479,18 @@ class ScrollerVis {
   step4(direction) {
     const vis = this;
     console.log("step4", direction);
+    let rmv_ctries = ["Greece"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1981")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1979")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
   }
@@ -486,17 +498,18 @@ class ScrollerVis {
   step5(direction) {
     const vis = this;
     console.log("step5", direction);
+    let rmv_ctries = ["Greece"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1984")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1981")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
   }
@@ -504,17 +517,18 @@ class ScrollerVis {
   step6(direction) {
     const vis = this;
     console.log("step6", direction);
+    let rmv_ctries = ["Spain", "Portugal"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1986")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1984")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
   }
@@ -522,17 +536,18 @@ class ScrollerVis {
   step7(direction) {
     const vis = this;
     console.log("step7", direction);
+    let rmv_ctries = ["Spain", "Portugal"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1989")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1986")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
   }
@@ -544,13 +559,13 @@ class ScrollerVis {
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1986")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", [])
       d3.select("#perm").transition().style("opacity", 0)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1989")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
   }
@@ -563,13 +578,13 @@ class ScrollerVis {
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1994")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1986")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", [])
       d3.select("#perm").transition().style("opacity", 0)
     }
   }
@@ -577,17 +592,18 @@ class ScrollerVis {
   step10(direction) {
     const vis = this;
     console.log("step10", direction);
+    let rmv_ctries = ["Austria", "Sweden", "Finland"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1995")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1994")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
   }
@@ -595,16 +611,18 @@ class ScrollerVis {
   step11(direction) {
     const vis = this;
     console.log("step11", direction);
+    let rmv_ctries = ["Austria", "Sweden", "Finland"]
+
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1999")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1995")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
 
@@ -613,33 +631,37 @@ class ScrollerVis {
   step12(direction) {
     const vis = this;
     console.log("step12", direction);
+    let rmv_ctries = ["Cyprus", "Czech Republic", "Estonia", "Latvia", "Lithuania",
+      "Hungary", "Malta", "Poland", "Slovakia", "Slovenia"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2004")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
+      drawPolygons(this.map, the_year, "elec", [])
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "1999")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
     }
   }
 
   step13(direction) {
     const vis = this;
     console.log("step13", direction);
+    let rmv_ctries = ["Romania", "Bulgaria"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2007")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2004")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
   }
@@ -647,17 +669,18 @@ class ScrollerVis {
   step14(direction) {
     const vis = this;
     console.log("step14", direction);
+    let rmv_ctries = ["Romania", "Bulgaria"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2009")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2007")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
   }
@@ -665,17 +688,18 @@ class ScrollerVis {
   step15(direction) {
     const vis = this;
     console.log("step15", direction);
+    let rmv_ctries = ["Croatia"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2013")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2009")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
   }
@@ -683,17 +707,18 @@ class ScrollerVis {
   step16(direction) {
     const vis = this;
     console.log("step16", direction);
+    let rmv_ctries = ["Croatia"]
 
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2014")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2013")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", rmv_ctries)
       d3.select("#perm").transition().style("opacity", 0)
     }
   }
@@ -705,13 +730,13 @@ class ScrollerVis {
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2013")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2014")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 0)
     }
   }
@@ -723,12 +748,12 @@ class ScrollerVis {
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2019")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2013")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", [])
     }
   }
 
@@ -739,13 +764,13 @@ class ScrollerVis {
     if (direction == "down") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2020")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "exp")
+      drawPolygons(this.map, the_year, "exp", [])
       d3.select("#perm").transition().style("opacity", 0)
     }
     else if (direction == "up") {
       let find_election_year = d3.groups(this.files[0], (d) => d.YEAR == "2019")
       const the_year = find_election_year.filter(subarray => subarray[0] === true)[0][1];
-      drawPolygons(this.map, the_year, "elec")
+      drawPolygons(this.map, the_year, "elec", [])
       d3.select("#perm").transition().style("opacity", 1)
     }
   }
