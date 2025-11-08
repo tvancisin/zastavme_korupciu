@@ -1,12 +1,12 @@
 let hovno = 0;
 
 const x = d3.scaleLinear()
-  .domain([0, 4000])
-  .range([0, width / 2]);
+  .domain([0, 5000])
+  .range([0, (width100) / 2]);
 
 const reverse_x = d3.scaleLinear()
-  .range([width / 2, 0])
-  .domain([0, 4000])
+  .range([(width100) / 2, 0])
+  .domain([0, 5000])
 
 // X axis
 bars_g.append("g")
@@ -398,7 +398,8 @@ class ScrollerVis {
       margin: { top: 50, right: 10, bottom: 20, left: 10 },
       steps: ['step1', 'step2', 'step3', 'step4', 'step5', 'step6',
         'step7', 'step8', 'step9', 'step10', 'step11', 'step12',
-        'step13', 'step14', 'step15', 'step16', 'step17', 'step18', 'step19']
+        'step13', 'step14', 'step15', 'step16', 'step17', 'step18', 'step19',
+      'step20', 'step21']
     }
     this.files = _files,
       this.map = _map,
@@ -411,23 +412,21 @@ class ScrollerVis {
     let vis = this;
     vis.width = vis.config.vis_width - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.vis_height - vis.config.margin.top - vis.config.margin.bottom;
-
+    console.log(this.files);
     // Y axis
     this.y = d3.scaleBand()
       .range([0, height - 20])
-      .domain(this.files[3].map(d => d.year))
+      .domain(this.files[2].map(d => d.year))
       .padding(.1);
 
     bars_g.append("g")
+      .attr("class", "bar_y_axis")
       .call(d3.axisLeft(this.y))
       .selectAll("text")
       .attr("transform", "translate(-11,0)")
       .style("font-family", "Montserrat")
       .style("font-size", "12px")
       .style("text-anchor", "middle");
-
-
-    // d3.selectAll(".tick text").style("visibility", "hidden")
 
     setTimeout(function () {
       hovno = 1;
@@ -775,56 +774,90 @@ class ScrollerVis {
     }
   }
   // mirror bars vis
-  // step10(direction) {
-  //   const vis = this;
-  //   console.log("step10", direction);
+  step20(direction) {
+    const vis = this;
+    console.log("step20", direction);
+    console.log(this.files[2]);
+    if (direction == "down") {
+      //Bars
 
-  //   if (direction == "down") {
-  //     //Bars
+      d3.selectAll(".tick text").style("visibility", "visible")
 
-  //     d3.selectAll(".tick text").style("visibility", "visible")
+      bars_g.selectAll(".myRect")
+        .data(this.files[2])
+        .join("rect")
+        .attr("class", "myRect")
+        .attr("x", x(0))
+        .attr("y", d => this.y(d.year))
+        .attr("rx", 3)
+        .attr("width", x(0))
+        .attr("height", this.y.bandwidth())
+        .attr("fill", "#FBE565")
+        .transition().delay(function (d, i) { return i * 100 })
+        .attr("width", d => x(d.in))
 
-  //     bars_g.selectAll(".myRect")
-  //       .data(this.files[3])
-  //       .join("rect")
-  //       .attr("class", "myRect")
-  //       .attr("x", x(0))
-  //       .attr("y", d => this.y(d.year))
-  //       .attr("rx", 3)
-  //       .attr("width", x(0))
-  //       .attr("height", this.y.bandwidth())
-  //       .attr("fill", "white")
-  //       .transition().delay(function (d, i) { return i * 100 })
-  //       .attr("width", d => x(d.in))
+      bars_g.selectAll(".my_eu_text")
+        .data(this.files[2])
+        .join("text")
+        .attr("class", "my_eu_text")
+        .attr("x", x(0))
+        .text(function(d){
+          return d.in + " mil."
+        })
+        .attr("y", d => this.y(d.year)+this.y.bandwidth()/2 + 5)
+        .attr("fill", "white")
+        .attr("font-size", 12)
+        .transition().delay(function (d, i) { return i * 100 })
+        .attr("x", d => x(d.in) + 15)
 
-  //     reverse_g.selectAll(".bar")
-  //       .data(this.files[3])
-  //       .join("rect")
-  //       .attr("class", "bar")
-  //       .attr("height", this.y.bandwidth())
-  //       .attr("rx", 3)
-  //       .attr("y", (d) => this.y(d.year))
-  //       .attr("width", function (d) { return 0; })
-  //       .attr("x", function (d) { return width / 2 })
-  //       .transition().delay(function (d, i) { return i * 100 })
-  //       .attr("x", function (d) { return reverse_x(d.out) })
-  //       .attr("width", function (d) { return reverse_x(0) - reverse_x(d.out); })
-  //       .attr("fill", "gray")
-  //   }
-  //   else if (direction == "up") {
+      reverse_g.selectAll(".bar")
+        .data(this.files[2])
+        .join("rect")
+        .attr("class", "bar")
+        .attr("height", this.y.bandwidth())
+        .attr("rx", 3)
+        .attr("y", (d) => this.y(d.year))
+        .attr("width", function (d) { return 0; })
+        .attr("x", function (d) { return width100 / 2 })
+        .transition().delay(function (d, i) { return i * 100 })
+        .attr("x", function (d) { return reverse_x(d.out) })
+        .attr("width", function (d) { return reverse_x(0) - reverse_x(d.out); })
+        .attr("fill", "#7A89D3")
 
-  //     d3.selectAll(".tick text").style("visibility", "hidden")
-  //     //Bars
-  //     bars_g.selectAll(".myRect")
-  //       .transition()
-  //       .attr("width", x(0))
+      reverse_g.selectAll(".my_sk_text")
+        .data(this.files[2])
+        .join("text")
+        .attr("font-size", 12)
+        .attr("class", "my_sk_text")
+        .attr("fill", "white")
+        .text(function(d){
+          return d.out + " mil."
+        })
+        .attr("text-anchor", "end")
+        .attr("y", (d) => this.y(d.year)+this.y.bandwidth()/2 + 5)
+        .attr("x", function (d) { return width100 / 2 })
+        .transition().delay(function (d, i) { return i * 100 })
+        .attr("x", function (d) { return reverse_x(d.out) - 15 })
+    }
+    else if (direction == "up") {
 
-  //     reverse_g.selectAll(".bar")
-  //       .transition()
-  //       .attr("width", 0)
-  //       .attr("x", width / 2)
-  //   }
-  // }
+      d3.selectAll(".tick text").style("visibility", "hidden")
+      d3.selectAll(".my_eu_text, .my_sk_text").remove()
+      //Bars
+      bars_g.selectAll(".myRect")
+        .transition()
+        .attr("width", x(0))
+
+      reverse_g.selectAll(".bar")
+        .transition()
+        .attr("width", 0)
+        .attr("x", width100 / 2)
+    }
+  }
+
+  step21(direction) {
+    console.log("step21", direction);
+  }
 
   // edge bundle
   // step13(direction) {

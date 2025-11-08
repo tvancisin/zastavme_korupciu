@@ -545,3 +545,7 @@ h2 {
   color: white;
   font-size: 15px;
 }
+
+.bar_y_axis path{
+  visibility: hidden;
+}
